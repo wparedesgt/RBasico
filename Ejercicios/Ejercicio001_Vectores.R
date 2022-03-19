@@ -57,8 +57,8 @@ Gender <- c("M", "M", "F", "F")
   ## 1  22  James      M
   ## 2  25 Mathew      M
 #  a. #WP
-DataFrame = data.frame(c(Age), c(Name), c(Gender))
-subset(DataFrame, Gender == "M")
+#DataFrame = data.frame(c(Age), c(Name), c(Gender))
+#subset(DataFrame, Gender == "M")
 
 #b.
 #DataFrame = data.frame(c(Age),c(Name),c(Gender))
