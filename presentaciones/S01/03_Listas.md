@@ -1,5 +1,5 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="Azure_R_ML.jpg">
 </p>
 
 
@@ -18,6 +18,9 @@ Ilustrando
 ========================================================
 
 Para ilustrar listas, considere el conjunto de datos de pacientes médicos que hemos estado construyendo con los datos de tres pacientes almacenados en seis vectores. Si queremos mostrar todos los datos en John Doe (sujeto 1), deberíamos ingresar cinco comandos R:
+
+Ilustrando
+========================================================
 
 
 
