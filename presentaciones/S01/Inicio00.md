@@ -1,0 +1,145 @@
+Introducción
+========================================================
+author: William V. Paredes  
+date: Marzo 2022
+autosize: true
+
+Que es R?
+========================================================
+
+Empezaremos diciendo que R es un lenguaje de programación interpretado,
+de distribución libre, bajo Licencia GNU, y se mantiene en un ambiente
+para el cómputo estadístico y gráfico. Este software corre en distintas plataformas
+Linux, Windows, MacOS, e incluso en PlayStation 3.
+
+R fue creado en 1992 en Nueva Zelanda por Ross Ihaka y Robert Gentleman
+(Ihaka [1998]). La intención inicial con R, era hacer un lenguaje didáctico,
+para ser utilizado en el curso de Introducción a la Estadística de la Universidad
+de Nueva Zelanda.
+
+
+
+Ross y Robert
+========================================================
+
+A modo de broma Ross y Robert, comienzan a llamar “R” al lenguaje que
+implementaron, por las iniciales de sus nombres, y desde entonces así se le
+conoce en la muy extendida comunidad amante de dicho lenguaje.
+
+Luego de la creación de R
+(en 1992), se da un primer anuncio al público del software R en 1993. En el año
+de 1995 Martin Mächler, de la Escuela Politécnica Federal de Zúrich, convence
+a Ross y Robert a usar la Licencia GNU para hacer de R un software libre.
+Como consecuencia, a partir de 1997, R forma parte del proyecto GNU.
+
+
+Un ejemplo
+========================================================
+
+En teoria a esta altura ya tienen instalado r y rstudio en su equipo, asi que manos a la obra pongamos este pequeño fragmento de codigo.
+
+
+```r
+# Este es un comentario; en R los comentarios empiezan
+# a partir del caracter '#'.
+# -------------------
+# En seguida asignaremos mediante código de R el valor 2022 a una
+# variable llamada 'x':
+
+x <- 2022
+```
+
+
+En R todo es un objeto
+========================================================
+
+```r
+# Ahora se imprimirá el valor de la variable dos veces, la primera
+# vez se hará de manera explícita por medio de la función print(),
+# como sigue:
+print(x)
+```
+
+```
+[1] 2022
+```
+
+```r
+# ... en seguida se imprimirá de manera implícita, simplemente
+# 'tecleándola' en la consola:
+x
+```
+
+```
+[1] 2022
+```
+
+```r
+# Finalmente haremos una multiplicación de x por 2
+2*x
+```
+
+```
+[1] 4044
+```
+
+Algunas características importantes de R
+========================================================
+
+El sistema R esta dividido en dos partes conceptuales: 1) El sistema base
+de R, que es el que puedes bajar de CRAN3; y, 2) en todo lo demás.
+
+La funcionalidad de R consta de paquetes modulares.
+
+https://cran.r-project.org/web/packages/available_packages_by_name.html
+
+El sistema base de R contiene el
+paquete básico que se requiere para su ejecución y la mayoría de las funciones
+fundamentales. Los otros paquetes contenidos en la “base” del sistema incluye
+a utils, stats, datasets, graphics, grDevices, grid, tools, parallel, compiler,
+splines, tcltk, stats4.
+
+
+Software Libre
+========================================================
+
+Debido a que no hay que preocuparse por licencias y cuenta con la libertad que garantiza GNU. Es decir con R se tiene la libertad de: 
+
+- 1) Correrlo para cualquier propósito.
+- 2) Estudiar como trabaja el programa y adaptarlo a sus necesidades, pues se tiene acceso al código fuente.
+- 3) redistribuir copias. 
+- 4) mejorar el programa y liberar sus mejoras al público en general.
+
+
+Importante
+========================================================
+
+Debido a su estructura, R consume mucho recurso de memoria, por lo tanto si se utilizan datos de tamaño enorme, el programa se alentaría o, en el peor de los casos, no podría procesarlos. 
+
+En la mayoría de los casos, sin embargo, los problemas que pudieran surgir con referencia a la lentitud en la ejecución del código, tienen solución, principalmente teniendo cuidado de vectorizar el código; ya que esto permitiría particionarlo y aprovechar en procesamiento paralelo en equipos con multi-núcleos.
+
+
+Ayuda en R
+========================================================
+R cuenta con una muy buena ayuda en el uso de funciones de manera muy
+similar al man de UNIX. para obtener información de cualquier función en específico,
+por ejemplo lm, el comando es:
+
+
+```r
+help(lm)
+```
+
+o abreviando 
+
+
+```r
+?lm ## este es el que yo utilizo generalmente
+```
+
+Fin
+========================================================
+
+Fin de la presentación, ahora pasemos a los vectores!!
+
+

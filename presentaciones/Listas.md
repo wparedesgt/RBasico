@@ -1,0 +1,190 @@
+<p align="center">
+<img src="logomingob2018.png">
+</p>
+
+
+Listas
+========================================================
+author: William V. Paredes
+date: Agosto 2019
+autosize: true
+
+Listas
+========================================================
+
+Una lista es una estructura de datos, muy parecida a un vector, en el sentido de que se utiliza para almacenar un conjunto ordenado de elementos. Sin embargo, cuando un vector requiere que todos sus elementos sean del mismo tipo, una lista permite recopilar diferentes tipos de elementos. Debido a esta flexibilidad, las listas se utilizan a menudo para almacenar diversos tipos de datos de entrada y salida y conjuntos de parámetros de configuración para modelos de aprendizaje automático.
+
+Ilustrando
+========================================================
+
+Para ilustrar listas, considere el conjunto de datos de pacientes médicos que hemos estado construyendo con los datos de tres pacientes almacenados en seis vectores. Si queremos mostrar todos los datos en John Doe (sujeto 1), deberíamos ingresar cinco comandos R:
+
+
+
+
+```r
+subject_name[1];temperature[1];flu_status[1];gender[1];blood[1];symptoms[1]
+```
+
+```
+[1] "John Doe"
+```
+
+```
+[1] 98.1
+```
+
+```
+[1] FALSE
+```
+
+```
+[1] MALE
+Levels: FEMALE MALE
+```
+
+```
+[1] O
+Levels: A B AB O
+```
+
+```
+[1] SEVERE
+Levels: MILD < MODERATE < SEVERE
+```
+
+```r
+#subject_name[1]
+#temperature[1]
+#flu_status[1]
+#gender[1]
+#blood[1]
+#symptoms[1]
+```
+
+Ilustrando
+========================================================
+
+Esto parece mucho trabajo para mostrar los datos médicos de un paciente. La estructura de la lista nos permite agrupar todos los datos del paciente en un objeto que podemos usar repetidamente.
+
+Creando una lista
+========================================================
+
+Similar a crear un vector con c (), una lista se crea utilizando la función list (), como se muestra en el siguiente ejemplo. Una diferencia notable es que cuando se construye una lista, a cada componente de la secuencia casi siempre se le asigna un nombre. Los nombres no son técnicamente necesarios, pero permiten acceder a los valores de la lista más adelante por nombre en lugar de por posición numerada. Para crear una lista con componentes con nombre para todos los datos del primer paciente, escriba lo siguiente:
+
+Ejemplo
+========================================================
+
+
+```r
+subject1 <- list(fullname = subject_name[1], temperature = temperature[1], flu_status = flu_status[1],gender = gender[1],
+                 blood = blood[1], symptoms = symptoms[1])
+```
+
+Los datos de este paciente ahora se recopilan en la lista subject1:
+
+
+Ejemplo
+========================================================
+
+
+```r
+subject1
+```
+
+```
+$fullname
+[1] "John Doe"
+
+$temperature
+[1] 98.1
+
+$flu_status
+[1] FALSE
+
+$gender
+[1] MALE
+Levels: FEMALE MALE
+
+$blood
+[1] O
+Levels: A B AB O
+
+$symptoms
+[1] SEVERE
+Levels: MILD < MODERATE < SEVERE
+```
+
+Para tener en cuenta
+========================================================
+
+Tenga en cuenta que los valores están etiquetados con los nombres que especificamos en el comando anterior. Sin embargo, todavía se puede acceder a una lista utilizando métodos similares a un vector.
+
+Para acceder al valor de temperatura, use el siguiente comando:
+
+
+```r
+subject1[2]
+```
+
+```
+$temperature
+[1] 98.1
+```
+
+Operador [[]]
+========================================================
+
+El resultado de usar operadores de estilo vectorial en un objeto de lista, es otro objeto de lista, que es un subconjunto de la lista original. Por ejemplo, el código anterior devolvió una lista con un solo componente de temperatura. Para devolver un solo elemento de la lista en su tipo de datos nativo, use corchetes dobles ([[y]]) cuando intente seleccionar el componente de la lista. Por ejemplo, lo siguiente devuelve un vector numérico de longitud uno:
+
+
+```r
+subject1[[2]]
+```
+
+```
+[1] 98.1
+```
+
+Operador $
+========================================================
+Para mayor claridad, a menudo es más fácil acceder a los componentes de la lista directamente, agregando $ y el nombre del valor al nombre del componente de la lista, de la siguiente manera:
+
+
+```r
+subject1$temperature
+```
+
+```
+[1] 98.1
+```
+Al igual que la notación de doble corchete, esto devuelve el componente de lista en su tipo de datos nativos (en este caso, un vector numérico de longitud uno).
+
+Acceso al valor por nombre
+========================================================
+
+El acceso al valor por nombre también garantiza que se recupere el elemento correcto, incluso si el orden de los elementos de la lista se modifica más adelante.
+
+Es posible obtener varios elementos en una lista especificando un vector de nombres. Lo siguiente devuelve un subconjunto de la lista del sujeto 1, que contiene solo los componentes de temperatura y estado de la gripe:
+
+
+```r
+subject1[c("temperature", "flu_status")]
+```
+
+```
+$temperature
+[1] 98.1
+
+$flu_status
+[1] FALSE
+```
+
+Conclusión
+========================================================
+
+Conjuntos de datos completos se podrían construir utilizando listas y listas de listas. Por ejemplo, podría considerar crear una lista subject2 y subject3, y combinarlas en un solo objeto de lista llamado pt_data.
+
+Sin embargo, la construcción de un conjunto de datos de esta manera es lo suficientemente común como para que R proporcione una estructura de datos especializada específicamente para esta tarea.
+
+

@@ -1,0 +1,155 @@
+<p align="center">
+<img src="logomingob2018.png">
+</p>
+
+DataFrames
+========================================================
+author: William V. Paredes
+date: Agosto 2019
+autosize: true
+
+Introducción
+========================================================
+
+Por mucho, la estructura de datos R más importante utilizada en el aprendizaje automático es el marco de datos, una estructura análoga a una hoja de cálculo o una base de datos, ya que tiene filas y columnas de datos. En términos de R, un marco de datos puede entenderse como una lista de vectores o factores, cada uno con exactamente el mismo número de valores. Debido a que el marco de datos es literalmente una lista de objetos de tipo vectorial, combina aspectos de ambos vectores y listas.
+
+========================================================
+
+```{r include=FALSE}
+
+subject_name <- c("John Doe", "Jane Doe", "Steve Graves")
+temperature <- c(98.1, 98.6, 101.4)
+flu_status <- c(FALSE, FALSE, TRUE)
+gender <- factor(c("MALE", "FEMALE", "MALE"))
+blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
+symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
+
+
+```
+
+Vamos a crear un marco de datos para nuestro conjunto de datos de pacientes. Usando los vectores de datos del paciente que creamos anteriormente, la función data.frame() los combina en un marco de datos:
+
+========================================================
+
+```{r echo=TRUE}
+pt_data <- data.frame(subject_name, temperature, flu_status, gender, blood, symptoms, stringsAsFactors = FALSE)
+
+```
+
+Es posible que note algo nuevo en el código anterior. Incluimos un parámetro adicional: stringsAsFactors = FALSE. Si no especificamos esta opción, R convertirá automáticamente cada vector de caracteres en un factor.
+
+========================================================
+Esta característica es ocasionalmente útil, pero a veces también es injustificada. Aquí, por ejemplo, el campo subject_name definitivamente no son datos categóricos, ya que los nombres no son categorías de valores. Por lo tanto, establecer la opción stringsAsFactors en FALSE nos permite convertir vectores de caracteres a factores solo donde tiene sentido para el proyecto.
+
+
+========================================================
+Cuando mostramos el marco de datos pt_data, vemos que la estructura es bastante diferente de las estructuras de datos con las que trabajamos anteriormente:
+
+```{r}
+pt_data
+```
+
+========================================================
+En comparación con los vectores, factores y listas unidimensionales, un marco de datos tiene dos dimensiones y se muestra en formato de matriz. Este marco de datos en particular tiene una columna para cada vector de datos del paciente y una fila para cada paciente. En términos de aprendizaje automático, las columnas del marco de datos son las características o atributos y las filas son los ejemplos.
+
+========================================================
+Para extraer columnas enteras (vectores) de datos, podemos aprovechar el hecho de que un marco de datos es simplemente una lista de vectores. Similar a las listas, la forma más directa de extraer un solo elemento es refiriéndose a él por su nombre. Por ejemplo, para obtener el vector subject_name, escriba:
+
+```{r}
+
+pt_data$subject_name
+
+```
+
+========================================================
+También similar a las listas, se puede usar un vector de nombres para extraer varias columnas de un marco de datos:
+
+```{r}
+pt_data[c("temperature", "flu_status")]
+```
+
+========================================================
+Cuando accedemos al marco de datos de esta manera, el resultado es un marco de datos que contiene todas las filas de datos para todas las columnas solicitadas. Alternativamente, el comando pt_data[2: 3] también extraerá las columnas de temperatura y flu_status. Sin embargo, solicitar las columnas por nombre da como resultado un código R claro y fácil de mantener que no se romperá si el marco de datos se reestructura en el futuro.
+
+```{r}
+
+pt_data[2: 3]
+
+```
+
+
+========================================================
+Para extraer valores en el marco de datos, se utilizan métodos como los para acceder a valores en vectores. Sin embargo, hay una excepción importante.
+
+Debido a que el marco de datos es bidimensional, se deben especificar tanto las filas como las columnas que se desea extraer. Las filas se especifican primero, seguidas de una coma y luego las columnas en un formato como este: [filas, columnas]. Al igual que con los vectores, las filas y columnas se cuentan comenzando en uno.
+
+========================================================
+Por ejemplo, para extraer el valor en la primera fila y la segunda columna del marco de datos del paciente (el valor de temperatura para John Doe), use el siguiente comando:
+
+```{r}
+pt_data[1, 2]
+```
+
+========================================================
+Si desea más de una fila o columna de datos, especifique vectores para las filas y columnas deseadas. El siguiente comando extraerá los datos de las filas primera y tercera y las columnas segunda y cuarta:
+
+```{r}
+pt_data[c(1, 3), c(2, 4)]
+```
+
+========================================================
+Para extraer todas las filas o columnas, simplemente deje la parte de la fila o columna en blanco.
+
+Por ejemplo, para extraer todas las filas de la primera columna:
+
+```{r}
+pt_data[, 1]
+```
+
+========================================================
+Para extraer todas las columnas de la primera fila, use el siguiente comando:
+
+```{r}
+pt_data[1, ]
+
+```
+
+========================================================
+Para extraer todo, use el siguiente comando:
+
+```{r}
+  
+pt_data[,]
+
+```
+
+========================================================
+También se pueden utilizar otros métodos para acceder a valores en listas y vectores para recuperar filas y columnas de marcos de datos. Por ejemplo, se puede acceder a las columnas por nombre en lugar de por posición, y los signos negativos se pueden usar para excluir filas o columnas de datos.
+
+========================================================
+Por lo tanto, el siguiente comando:
+```{r}
+pt_data[c(1, 3), c("temperature", "gender")]
+```
+
+Que es el equivalente a:
+```{r}
+pt_data[-2, c(-1, -3, -5, -6)]
+```
+
+========================================================
+Para familiarizarse con los marcos de datos, intente practicar operaciones similares con el conjunto de datos del paciente o, mejor aún, utilice los datos de uno de sus propios proyectos. Estos tipos de operaciones son cruciales para gran parte del trabajo que haremos en los próximos capítulos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

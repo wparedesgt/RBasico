@@ -1,0 +1,75 @@
+<p align="center">
+<img src="logomingob2018.png">
+</p>
+
+Operador DOT
+========================================================
+author: William V. Paredes
+date: Agosto-Septiembre 2019
+autosize: true
+
+Introducción
+========================================================
+Una de las ventajas de usar la tubería%>% es que no tenemos que seguir nombrando nuevos objetos mientras manipulamos el marco de datos. Como recordatorio rápido, si queremos calcular la tasa media de asesinatos para los estados del sur, en lugar de escribir:
+
+
+
+Introducción
+========================================================
+
+```r
+tab_1 <- filter(murders, region == "South")
+tab_2 <- mutate(tab_1, rate = total / population * 10^5)
+rates <- tab_2$rate
+median(rates)
+```
+
+```
+[1] 3.398069
+```
+
+========================================================
+Podemos evitar definir nuevos objetos intermedios escribiendo en su lugar:
+
+
+```r
+filter(murders, region == "South") %>% 
+  mutate(rate = total / population * 10^5) %>% 
+  summarize(median = median(rate)) %>%
+  pull(median)
+```
+
+```
+[1] 3.398069
+```
+
+
+========================================================
+Podemos hacer esto porque cada una de estas funciones toma un dataframe como primer argumento. Pero, ¿qué pasa si queremos acceder a un componente del dataframe?
+
+- Por ejemplo, ¿qué pasa si la función pull() no está disponible y queremos acceder a tab_2$rate? 
+
+- ¿Qué nombre de dataframe usaríamos? 
+
+La respuesta es el operador de puntos.
+========================================================
+Por ejemplo, para acceder al vector rate sin la función pull(), podríamos usar:
+
+```r
+rates <-filter(murders, region == "South") %>% 
+  mutate(rate = total / population * 10^5) %>% 
+  .$rate
+median(rates)
+```
+
+```
+[1] 3.398069
+```
+
+========================================================
+En la siguiente sección, veremos otras instancias en las que usar el "." es útil.
+
+
+
+
+

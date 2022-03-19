@@ -1,0 +1,38 @@
+#S03_C04_The_Pipe
+#Encadenador %>% 
+
+#Con dplyr podemos realizar una serie de operaciones, por ejemplo, seleccionar y luego filtrar, enviando los resultados de una función a otra utilizando lo que se llama operador de tubería:%>%. 
+
+#Algunos detalles se incluyen a continuación.
+
+#Escribimos el código anterior para mostrar tres variables (estado, región, tasa) para los estados que tienen tasas de homicidio por debajo de 0,71. Para hacer esto, definimos el objeto intermedio new_table. En dplyr podemos escribir código que se parezca más a una descripción de lo que queremos hacer sin objetos intermedios:
+
+#original data → select → filter 
+
+
+#Para tal operación, podemos usar la tubería%>% (pipes). El código se ve así:
+
+
+library(tidyverse)
+library(dslabs)
+data("murders")
+
+murders <- mutate(murders, rate = total/population * 10^5)
+
+murders %>% select(state, region, rate) %>% filter(rate <= 0.71)
+
+
+#Esta línea de código es equivalente a las dos líneas de código anteriores. ¿Que esta pasando aqui?
+  
+#En general, la tubería envía el resultado del lado izquierdo de la tubería como primer argumento de la función en el lado derecho de la tubería. Aquí hay un ejemplo muy simple:
+
+16 %>% sqrt() %>% log(base = 2)
+
+#Por lo tanto, al usar la tubería con dataframe y dplyr, ya no necesitamos especificar el primer argumento requerido ya que las funciones de dplyr que hemos descrito toman todos los datos como el primer argumento. En el código que escribimos:
+
+murders %>% select(state, region, rate) %>% filter(rate <= 0.71)
+
+#Tenga en cuenta que la tubería funciona bien con funciones donde el primer argumento son los datos de entrada. Las funciones en paquetes tidyverse como dplyr tienen este formato y se pueden usar fácilmente con la tubería.
+
+
+

@@ -1,0 +1,105 @@
+#S03_C08_Tibbles
+#Tibbles
+
+#Los datos ordenados(Tidy) deben almacenarse en dataframes. 
+
+library(tidyverse)
+library(dslabs)
+
+data(murders)
+class(murders)
+
+#En la Sección anterior presentamos la función group_by, que permite estratificar los datos antes de calcular las estadísticas de summarize(). Pero, ¿dónde se almacena la información del dataframe?
+
+murders %>% group_by(region) %>% head()
+
+
+#Tenga en cuenta que no hay columnas con esta información. Pero, si observa de cerca la salida anterior, verá la línea A tibble: 6 x 5. Podemos aprender la clase del objeto devuelto usando:
+
+murders %>% group_by(region) %>% class()
+
+#El tbl, pronunciado tibble, es un tipo especial de dataframe. Las funciones group_by y summary siempre devuelven este tipo de dataframe. La función group_by devuelve un tipo especial de tbl, grouped_df. Diremos más sobre esto más adelante. Por coherencia, los verbos de manipulación __dplyr__ (select, filter, mutate y arrange) conservan la clase de la entrada: si reciben un marco de datos regular, devuelven un marco de datos regular, mientras que si reciben un tibble, devuelven un tibble. Pero los tibbles son el formato preferido en tidyverse y, como resultado, las funciones tidyverse que producen un marco de datos desde cero devuelven un tibble. Por ejemplo, en el Capítulo 6 veremos que las funciones tidyverse utilizadas para importar datos crean tibbles.
+
+#Los tibbles son muy similares a los dataframes. De hecho, puede pensar en ellos como una versión moderna de ellos. No obstante, hay tres diferencias importantes que describiremos.
+
+#Los tibbles se ven mejor
+
+#El método de impresión para tibbles es más legible que el dataframe. Para ver esto, compare los resultados de los asesinatos normal o si lo convertimos en un tibble.
+
+#Podemos hacer esto usando as_tibble(murders). Si usa RStudio, la salida para un tibble se ajusta al tamaño de su ventana. 
+
+#Los subset en un tibble son tibbles.
+
+#Podemos recuperar un objeto que no es un dataframe, como un vector. Por ejemplo:
+
+class(murders[,4])
+
+#No es un dataframe con tibble esto no pasa
+
+class(as_tibble(murders)[,4])
+
+#Esto es útil en tidyverse ya que las funciones requieren dataframes como entrada.
+
+#Con tibbles, si desea acceder al vector que define una columna y no recuperar un dataframe, debe usar el descriptor de acceso $:
+
+class(as_tibble(murders)$population)
+
+#Una característica relacionada es que tibbles le dará una advertencia si intenta acceder a una columna que no existe. Si escribimos accidentalmente Population en lugar de population:
+
+murders$Population
+
+
+#devuelve un NULL sin advertencia, lo que puede dificultar la depuración. Por el contrario, si intentamos esto con un tibble, obtenemos una advertencia informativa:
+
+as_tibble(murders)$Population
+
+
+#Los tibbles pueden tener entradas complejas
+
+#Si bien las columnas del dataframe deben ser vectores de números, cadenas o valores lógicos, los tibbles pueden tener objetos más complejos, como listas o funciones. 
+
+#Además, podemos crear tibbles con funciones:
+
+tibble(id = c(1, 2, 3), func = c(mean, median, sd))
+
+
+#Los tibbles pueden ser agrupados
+
+#La función group_by devuelve un tipo especial de tibble: un tibble agrupado. Esta clase almacena información que le permite saber qué filas están en qué grupos. Las funciones tidyverse, en particular la función de summarize(), conocen la información del grupo.
+
+#Cree un tibble usando tibble() en lugar de data.frame
+
+#A veces es útil para nosotros crear nuestros propios dataframes. Para crear un dataframe en formato tibble, puede hacerlo utilizando la función tibble().
+
+grades <- tibble(names = c("John", "Juan", "Jean", "Yao"), 
+                     exam_1 = c(95, 80, 90, 85), 
+                     exam_2 = c(90, 85, 85, 90))
+grades
+
+
+#Tenga en cuenta que la base R (sin paquetes cargados) tiene una función con un nombre muy similar, data.frame, que puede usarse para crear un dataframe regular en lugar de un tibble. Otra diferencia importante es que, por defecto, data.frame coacciona los caracteres en factores sin proporcionar una advertencia o mensaje:
+
+grades <- data.frame(names = c("John", "Juan", "Jean", "Yao"), 
+                     exam_1 = c(95, 80, 90, 85), 
+                     exam_2 = c(90, 85, 85, 90))
+class(grades$names)
+
+
+#Para evitar esto, tenemos que agregar como argumento extra stringsAsFactors = FALSE
+
+
+grades <- data.frame(names = c("John", "Juan", "Jean", "Yao"), 
+                     exam_1 = c(95, 80, 90, 85), 
+                     exam_2 = c(90, 85, 85, 90),
+                     stringsAsFactors = FALSE)
+class(grades$names)
+
+#Para convertir un marco de datos normal en un tibble, puede usar la función as_tibble.
+
+as_tibble(grades) %>% class()
+
+
+
+
+
+

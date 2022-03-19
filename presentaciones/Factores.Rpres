@@ -1,0 +1,100 @@
+Factores
+========================================================
+author: William V. Paredes
+date:  Agosto del 2019
+autosize: true
+
+Que es un factor?
+========================================================
+
+Un factor es un caso especial de vector que se usa únicamente para representar variables categóricas u ordinales. En el conjunto de datos médicos que estamos construyendo, podríamos usar un factor para representar el género, porque usa dos categorías: MASCULINO Y FEMENINO.
+
+Porque no usar vectores?
+========================================================
+
+Una ventaja de los factores es que las etiquetas de categoría se almacenan solo una vez. Por ejemplo, en lugar de almacenar MALE, MALE, FEMALE, la computadora puede almacenar 1, 1, 2, lo que reduce el tamaño de la memoria necesaria para almacenar la misma información. Además, muchos algoritmos de aprendizaje automático o machine learning, tratan los datos nominales y numéricos de manera diferente. La codificación como factores a menudo es necesaria para informar a una función de R para tratar los datos categóricos de manera adecuada.
+
+
+OJO
+========================================================
+
+No se debe usar un factor para los vectores de caracteres que no son realmente categóricos. Si un vector almacena en su mayoría valores únicos como nombres o cadenas de identificación, manténgalo como un vector.
+
+
+Creando un Factor
+========================================================
+
+Para crear un factor a partir de un vector de caracteres, simplemente aplique la función factor ().
+
+Por ejemplo:
+
+```{r}
+
+gender <- factor(c("MALE", "FEMALE", "MALE"))
+
+gender
+
+```
+
+Observe
+========================================================
+
+Observe que cuando se mostraron los datos de género de John Doe y Jane Doe, R imprimió información adicional sobre el factor de género. La variable de niveles comprende el conjunto de posibles categorías que el factor podría tomar, en este caso: MASCULINO, FEMENINO.
+
+
+Niveles Adicionales
+========================================================
+
+Cuando creamos factores, podemos agregar niveles adicionales que pueden no aparecer en los datos. Supongamos que agregamos otro factor para el tipo de sangre, como se muestra en el siguiente ejemplo:
+
+
+```{r}
+
+blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
+
+```
+
+Observe que cuando definimos el factor sanguíneo para los tres pacientes, especificamos un vector adicional de cuatro tipos de sangre posibles usando el parámetro de niveles. Como resultado, aunque nuestros datos solo incluyeron los tipos O, AB y A, los cuatro tipos se almacenan con el factor sanguíneo como lo indica la salida. Almacenar el nivel adicional permite la posibilidad de agregar datos con otros tipos de sangre en el futuro. También garantiza que si tuviéramos que crear una tabla de tipos de sangre, sabríamos que existe el tipo B, a pesar de que no se registra en nuestros datos.
+
+
+Categorias y variables nominales
+========================================================
+
+La estructura de datos de factores también nos permite incluir información sobre el orden de las categorías de una variable nominal, lo que proporciona una manera conveniente de almacenar datos ordinales.
+
+Categorias y variables nominales
+========================================================
+
+Por ejemplo, supongamos que tenemos datos sobre la gravedad de los síntomas de un paciente codificados en un nivel creciente de gravedad de leve a moderada a grave. Indicamos la presencia de datos ordinales al proporcionar los niveles del factor en el orden deseado, enumerados en orden ascendente de menor a mayor, y estableciendo el parámetro ordenado en VERDADERO, como se muestra:
+
+```{r}
+
+symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
+
+```
+
+Las pruebas logicas
+========================================================
+
+Una característica útil de los factores ordenados es que las pruebas lógicas funcionan como usted espera. Por ejemplo, podemos probar si los síntomas de cada paciente son más que moderados:
+
+```{r}
+symptoms > "MODERATE"
+
+```
+
+Los algoritmos de aprendizaje automático (machine learnig)capaces de modelar datos ordinales esperarán los factores ordenados, así que asegúrese de codificar sus datos en consecuencia.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

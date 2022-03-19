@@ -1,0 +1,83 @@
+<p align="center">
+<img src="logomingob2018.png">
+</p>
+
+Estructuras de Control
+========================================================
+author: William V. Paredes
+date: Agosto-Septiembre 2019
+autosize: true
+
+Introducción
+========================================================
+Son aquellas construcciones sintacticas del lenguaje que dirigen el flujo de ejecucion de un programa.
+
+
+Construcciones IF-ELSE
+========================================================
+Funcionan igual que otros lenguajeas de programacion, con la salvedad que pueden ser capitalizadas, es decir la construccion en si misma regresa un valor que puede ser asignado a una variable o utilizado de otras maneras.
+
+Construcciones IF-ELSE
+========================================================
+Los siguientes ejemplos muestran la Sintaxis.
+
+```{r}
+
+aa <-  15
+
+if(aa > 14) print("SI MAYOR") #if sin else
+
+```
+
+Instruccion compuesta
+========================================================
+
+```{r}
+
+if(aa > 14){                 #Instruccion compuesta
+  print("Primer Reglon") 
+  print("Si Mayor")
+  } 
+
+```
+
+
+Usando el valor que regresa el IF
+========================================================
+
+```{r}
+
+y <- 10
+
+y <- if(aa > 14) 50
+
+y
+
+```
+
+========================================================
+La construccion de IF adminte unicamente una sola expresion, pero esta puede ser compuesta, que se contruye mediante los parentesis {}, y las expresiones en su interior separadas por un cambio de reglon o ;.
+
+
+
+Ejemplo con varios operadores y expresiones compuestas.
+========================================================
+
+```{r}
+
+if(10 > aa) {  #1mer Bloque
+  print("Rango Menor")
+} else if (10 <= aa && aa <= 20) {  #Segundo Bloque
+  print("Primer Renglon"); print("Rango Medio")
+} else { #Tercer Bloque
+  print("Rango Mayor")
+}
+
+```
+
+
+
+
+
+
+
