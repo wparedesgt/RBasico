@@ -6,7 +6,7 @@
 Listas
 ========================================================
 author: William V. Paredes
-date: Agosto 2019
+date: Marzo 2022
 autosize: true
 
 Listas
@@ -19,28 +19,47 @@ Ilustrando
 
 Para ilustrar listas, considere el conjunto de datos de pacientes médicos que hemos estado construyendo con los datos de tres pacientes almacenados en seis vectores. Si queremos mostrar todos los datos en John Doe (sujeto 1), deberíamos ingresar cinco comandos R:
 
-```{r echo=FALSE}
 
 
-subject_name <- c("John Doe", "Jane Doe", "Steve Graves")
-temperature <- c(98.1, 98.6, 101.4)
-flu_status <- c(FALSE, FALSE, TRUE)
-gender <- factor(c("MALE", "FEMALE", "MALE"))
-blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
-symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
 
+```r
+subject_name[1];temperature[1];flu_status[1];gender[1];blood[1];symptoms[1]
 ```
 
-```{r echo=TRUE}
+```
+[1] "John Doe"
+```
 
-subject_name[1];temperature[1];flu_status[1];gender[1];blood[1];symptoms[1]
+```
+[1] 98.1
+```
+
+```
+[1] FALSE
+```
+
+```
+[1] MALE
+Levels: FEMALE MALE
+```
+
+```
+[1] O
+Levels: A B AB O
+```
+
+```
+[1] SEVERE
+Levels: MILD < MODERATE < SEVERE
+```
+
+```r
 #subject_name[1]
 #temperature[1]
 #flu_status[1]
 #gender[1]
 #blood[1]
 #symptoms[1]
-
 ```
 
 Ilustrando
@@ -56,11 +75,10 @@ Similar a crear un vector con c (), una lista se crea utilizando la función lis
 Ejemplo
 ========================================================
 
-```{r}
 
+```r
 subject1 <- list(fullname = subject_name[1], temperature = temperature[1], flu_status = flu_status[1],gender = gender[1],
                  blood = blood[1], symptoms = symptoms[1])
-
 ```
 
 Los datos de este paciente ahora se recopilan en la lista subject1:
@@ -69,8 +87,32 @@ Los datos de este paciente ahora se recopilan en la lista subject1:
 Ejemplo
 ========================================================
 
-```{r}
+
+```r
 subject1
+```
+
+```
+$fullname
+[1] "John Doe"
+
+$temperature
+[1] 98.1
+
+$flu_status
+[1] FALSE
+
+$gender
+[1] MALE
+Levels: FEMALE MALE
+
+$blood
+[1] O
+Levels: A B AB O
+
+$symptoms
+[1] SEVERE
+Levels: MILD < MODERATE < SEVERE
 ```
 
 Para tener en cuenta
@@ -80,8 +122,14 @@ Tenga en cuenta que los valores están etiquetados con los nombres que especific
 
 Para acceder al valor de temperatura, use el siguiente comando:
 
-```{r}
+
+```r
 subject1[2]
+```
+
+```
+$temperature
+[1] 98.1
 ```
 
 Operador [[]]
@@ -89,16 +137,26 @@ Operador [[]]
 
 El resultado de usar operadores de estilo vectorial en un objeto de lista, es otro objeto de lista, que es un subconjunto de la lista original. Por ejemplo, el código anterior devolvió una lista con un solo componente de temperatura. Para devolver un solo elemento de la lista en su tipo de datos nativo, use corchetes dobles ([[y]]) cuando intente seleccionar el componente de la lista. Por ejemplo, lo siguiente devuelve un vector numérico de longitud uno:
 
-```{r}
+
+```r
 subject1[[2]]
+```
+
+```
+[1] 98.1
 ```
 
 Operador $
 ========================================================
 Para mayor claridad, a menudo es más fácil acceder a los componentes de la lista directamente, agregando $ y el nombre del valor al nombre del componente de la lista, de la siguiente manera:
 
-```{r}
+
+```r
 subject1$temperature
+```
+
+```
+[1] 98.1
 ```
 Al igual que la notación de doble corchete, esto devuelve el componente de lista en su tipo de datos nativos (en este caso, un vector numérico de longitud uno).
 
@@ -109,8 +167,17 @@ El acceso al valor por nombre también garantiza que se recupere el elemento cor
 
 Es posible obtener varios elementos en una lista especificando un vector de nombres. Lo siguiente devuelve un subconjunto de la lista del sujeto 1, que contiene solo los componentes de temperatura y estado de la gripe:
 
-```{r}
+
+```r
 subject1[c("temperature", "flu_status")]
+```
+
+```
+$temperature
+[1] 98.1
+
+$flu_status
+[1] FALSE
 ```
 
 Conclusión

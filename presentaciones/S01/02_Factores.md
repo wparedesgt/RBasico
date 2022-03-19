@@ -1,7 +1,7 @@
 Factores
 ========================================================
 author: William V. Paredes
-date:  Agosto del 2019
+date:  Marzo 2022
 autosize: true
 
 Que es un factor?
