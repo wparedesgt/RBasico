@@ -1,11 +1,11 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="tidyverse.jpg">
 </p>
 
 Datos Ordenados
 ========================================================
 author: William V. Paredes  
-date: Agosto-Septiembre 2019
+date: Abril-Mayo 2022
 autosize: true
 
 Tidy Data

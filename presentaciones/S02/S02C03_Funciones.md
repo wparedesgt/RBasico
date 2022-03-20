@@ -1,12 +1,12 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="machine-learning.jpg">
 </p>
 
 
 Funciones
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Abril-Mayo 2022
 autosize: true
 
 Introducción
@@ -111,11 +111,9 @@ Ejecutaremos una funcion como ejemplo con los numero de fibbonacci, en la cual a
 fibbonacci <- function(n) {
   if(n %in% c(0,1))
     return(1)
-  
   F0 <- 1
   F1 <- 1
   i <- 2
-  
   repeat {
     s <- F0 + F1 #Suma de los fib anteriores
     if(i == n) #Buscar el no.

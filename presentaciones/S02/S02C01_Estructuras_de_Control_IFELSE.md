@@ -1,11 +1,11 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="machine-learning.jpg">
 </p>
 
 Estructuras de Control
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Abril 2022
 autosize: true
 
 Introducción
