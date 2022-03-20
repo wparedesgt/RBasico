@@ -1,5 +1,5 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="Azure_R_ML.jpg">
 </p>
 
 Primera Carga y Exploración  de un CSV
@@ -17,18 +17,7 @@ Un archivo de datos tabular (como en "tabla") está estructurado en forma de mat
 
 Los valores de las características en cada línea están separados por un símbolo predefinido, conocido como delimitador. A menudo, la primera línea de un archivo de datos tabular enumera los nombres de las columnas de datos. Esto se llama una línea de encabezado.
 
-```{r include=FALSE}
 
-subject_name <- c("John Doe", "Jane Doe", "Steve Graves")
-temperature <- c(98.1, 98.6, 101.4)
-flu_status <- c(FALSE, FALSE, TRUE)
-gender <- factor(c("MALE", "FEMALE", "MALE"))
-blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
-symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
-pt_data <- data.frame(subject_name, temperature, flu_status, gender, blood, symptoms, stringsAsFactors = FALSE)
-
-
-```
 
 
 
@@ -36,11 +25,9 @@ pt_data <- data.frame(subject_name, temperature, flu_status, gender, blood, symp
 Quizás el formato de archivo de texto tabular más común es el archivo CSV (valores separados por comas), que como su nombre indica, utiliza la coma como delimitador. Los archivos CSV se pueden importar y exportar desde muchas aplicaciones comunes. Un archivo CSV que representa el conjunto de datos médico construido previamente se podría almacenar como:
 
 
-```{r}
 
-
+```r
 write.csv(pt_data,'pt_data.csv', row.names = TRUE)
-
 ```
 
 
@@ -53,10 +40,9 @@ La mejor manera de aprender el proceso de exploración de datos es con un ejempl
 ========================================================
 Dado que el conjunto de datos se almacena en el formato CSV, podemos usar la función read.csv () para cargar los datos en un marco de datos R.
 
-```{r}
 
-usedcars <- read.csv ("data/usedcars.csv", stringsAsFactors = FALSE)
-
+```r
+usedcars <- read.csv ("usedcars.csv", stringsAsFactors = FALSE)
 ```
 
 
@@ -73,18 +59,43 @@ En nuestro caso, los datos de automóviles usados no vienen con esta documentaci
 ========================================================
 La función str () proporciona un método para mostrar la estructura de las estructuras de datos R, como marcos de datos, vectores o listas. Se puede utilizar para crear el esquema básico de nuestro diccionario de datos:
 
-```{r}
 
+```r
 str(usedcars)
+```
 
+```
+'data.frame':	150 obs. of  6 variables:
+ $ year        : int  2011 2011 2011 2011 2012 2010 2011 2010 2011 2010 ...
+ $ model       : chr  "SEL" "SEL" "SEL" "SEL" ...
+ $ price       : int  21992 20995 19995 17809 17500 17495 17000 16995 16995 16995 ...
+ $ mileage     : int  7413 10926 7351 11613 8367 25125 27393 21026 32655 36116 ...
+ $ color       : chr  "Yellow" "Gray" "Silver" "Gray" ...
+ $ transmission: chr  "AUTO" "AUTO" "AUTO" "AUTO" ...
 ```
 
 ========================================================
 
-```{r}
 
+```r
 summary(usedcars)
+```
 
+```
+      year         model               price          mileage      
+ Min.   :2000   Length:150         Min.   : 3800   Min.   :  4867  
+ 1st Qu.:2008   Class :character   1st Qu.:10995   1st Qu.: 27200  
+ Median :2009   Mode  :character   Median :13592   Median : 36385  
+ Mean   :2009                      Mean   :12962   Mean   : 44261  
+ 3rd Qu.:2010                      3rd Qu.:14904   3rd Qu.: 55125  
+ Max.   :2012                      Max.   :21992   Max.   :151479  
+    color           transmission      
+ Length:150         Length:150        
+ Class :character   Class :character  
+ Mode  :character   Mode  :character  
+                                      
+                                      
+                                      
 ```
 
 

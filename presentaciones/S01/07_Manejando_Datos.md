@@ -1,11 +1,11 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="Azure_R_ML.jpg">
 </p>
 
 Manejando Datos
 ========================================================
 author: William V. Paredes
-date: Agosto 2019
+date: Marzo 2022
 autosize: true
 
 Introducción

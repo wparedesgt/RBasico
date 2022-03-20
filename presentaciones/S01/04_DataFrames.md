@@ -5,7 +5,7 @@
 DataFrames
 ========================================================
 author: William V. Paredes
-date: Marzo 2022
+date: Agosto 2019
 autosize: true
 
 Introducción
@@ -15,25 +15,15 @@ Por mucho, la estructura de datos R más importante utilizada en el aprendizaje 
 
 ========================================================
 
-```{r include=FALSE}
 
-subject_name <- c("John Doe", "Jane Doe", "Steve Graves")
-temperature <- c(98.1, 98.6, 101.4)
-flu_status <- c(FALSE, FALSE, TRUE)
-gender <- factor(c("MALE", "FEMALE", "MALE"))
-blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
-symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
-
-
-```
 
 Vamos a crear un marco de datos para nuestro conjunto de datos de pacientes. Usando los vectores de datos del paciente que creamos anteriormente, la función data.frame() los combina en un marco de datos:
 
 ========================================================
 
-```{r echo=TRUE}
-pt_data <- data.frame(subject_name, temperature, flu_status, gender, blood, symptoms, stringsAsFactors = FALSE)
 
+```r
+pt_data <- data.frame(subject_name, temperature, flu_status, gender, blood, symptoms, stringsAsFactors = FALSE)
 ```
 
 Es posible que note algo nuevo en el código anterior. Incluimos un parámetro adicional: stringsAsFactors = FALSE. Si no especificamos esta opción, R convertirá automáticamente cada vector de caracteres en un factor.
@@ -45,8 +35,16 @@ Esta característica es ocasionalmente útil, pero a veces también es injustifi
 ========================================================
 Cuando mostramos el marco de datos pt_data, vemos que la estructura es bastante diferente de las estructuras de datos con las que trabajamos anteriormente:
 
-```{r}
+
+```r
 pt_data
+```
+
+```
+  subject_name temperature flu_status gender blood symptoms
+1     John Doe        98.1      FALSE   MALE     O   SEVERE
+2     Jane Doe        98.6      FALSE FEMALE    AB     MILD
+3 Steve Graves       101.4       TRUE   MALE     A MODERATE
 ```
 
 ========================================================
@@ -55,26 +53,43 @@ En comparación con los vectores, factores y listas unidimensionales, un marco d
 ========================================================
 Para extraer columnas enteras (vectores) de datos, podemos aprovechar el hecho de que un marco de datos es simplemente una lista de vectores. Similar a las listas, la forma más directa de extraer un solo elemento es refiriéndose a él por su nombre. Por ejemplo, para obtener el vector subject_name, escriba:
 
-```{r}
 
+```r
 pt_data$subject_name
+```
 
+```
+[1] "John Doe"     "Jane Doe"     "Steve Graves"
 ```
 
 ========================================================
 También similar a las listas, se puede usar un vector de nombres para extraer varias columnas de un marco de datos:
 
-```{r}
+
+```r
 pt_data[c("temperature", "flu_status")]
+```
+
+```
+  temperature flu_status
+1        98.1      FALSE
+2        98.6      FALSE
+3       101.4       TRUE
 ```
 
 ========================================================
 Cuando accedemos al marco de datos de esta manera, el resultado es un marco de datos que contiene todas las filas de datos para todas las columnas solicitadas. Alternativamente, el comando pt_data[2: 3] también extraerá las columnas de temperatura y flu_status. Sin embargo, solicitar las columnas por nombre da como resultado un código R claro y fácil de mantener que no se romperá si el marco de datos se reestructura en el futuro.
 
-```{r}
 
+```r
 pt_data[2: 3]
+```
 
+```
+  temperature flu_status
+1        98.1      FALSE
+2        98.6      FALSE
+3       101.4       TRUE
 ```
 
 
@@ -86,15 +101,27 @@ Debido a que el marco de datos es bidimensional, se deben especificar tanto las 
 ========================================================
 Por ejemplo, para extraer el valor en la primera fila y la segunda columna del marco de datos del paciente (el valor de temperatura para John Doe), use el siguiente comando:
 
-```{r}
+
+```r
 pt_data[1, 2]
+```
+
+```
+[1] 98.1
 ```
 
 ========================================================
 Si desea más de una fila o columna de datos, especifique vectores para las filas y columnas deseadas. El siguiente comando extraerá los datos de las filas primera y tercera y las columnas segunda y cuarta:
 
-```{r}
+
+```r
 pt_data[c(1, 3), c(2, 4)]
+```
+
+```
+  temperature gender
+1        98.1   MALE
+3       101.4   MALE
 ```
 
 ========================================================
@@ -102,25 +129,41 @@ Para extraer todas las filas o columnas, simplemente deje la parte de la fila o 
 
 Por ejemplo, para extraer todas las filas de la primera columna:
 
-```{r}
+
+```r
 pt_data[, 1]
+```
+
+```
+[1] "John Doe"     "Jane Doe"     "Steve Graves"
 ```
 
 ========================================================
 Para extraer todas las columnas de la primera fila, use el siguiente comando:
 
-```{r}
-pt_data[1, ]
 
+```r
+pt_data[1, ]
+```
+
+```
+  subject_name temperature flu_status gender blood symptoms
+1     John Doe        98.1      FALSE   MALE     O   SEVERE
 ```
 
 ========================================================
 Para extraer todo, use el siguiente comando:
 
-```{r}
-  
-pt_data[,]
 
+```r
+pt_data[,]
+```
+
+```
+  subject_name temperature flu_status gender blood symptoms
+1     John Doe        98.1      FALSE   MALE     O   SEVERE
+2     Jane Doe        98.6      FALSE FEMALE    AB     MILD
+3 Steve Graves       101.4       TRUE   MALE     A MODERATE
 ```
 
 ========================================================
@@ -128,13 +171,27 @@ También se pueden utilizar otros métodos para acceder a valores en listas y ve
 
 ========================================================
 Por lo tanto, el siguiente comando:
-```{r}
+
+```r
 pt_data[c(1, 3), c("temperature", "gender")]
 ```
 
+```
+  temperature gender
+1        98.1   MALE
+3       101.4   MALE
+```
+
 Que es el equivalente a:
-```{r}
+
+```r
 pt_data[-2, c(-1, -3, -5, -6)]
+```
+
+```
+  temperature gender
+1        98.1   MALE
+3       101.4   MALE
 ```
 
 ========================================================
