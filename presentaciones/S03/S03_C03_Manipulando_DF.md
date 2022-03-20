@@ -1,21 +1,18 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="tidyverse.jpg">
 </p>
 
 Manipulando Data Frames
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Abril-Mayo 2022
 autosize: true
 
 Introducción
 ========================================================
 El paquete dplyr del tidyverse presenta funciones que realizan algunas de las operaciones más comunes cuando se trabaja con dataframes y usa nombres para estas funciones que son relativamente fáciles de recordar. 
-
 - Por ejemplo, para cambiar la tabla de datos agregando una nueva columna, usamos mutate().
-
 - Para filtrar la tabla de datos a un subconjunto de filas, usamos filter(). 
-
 - Finalmente, para subdividir los datos seleccionando columnas específicas, usamos select().
 
 
@@ -112,6 +109,7 @@ filter(new_table, rate <= 0.71)
 4  North Dakota North Central 0.5947151
 5       Vermont     Northeast 0.3196211
 ```
+
 
 Funcion select()
 ========================================================
