@@ -1,11 +1,11 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="tidyverse.jpg">
 </p>
 
 Paquete Purrr
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Mayo 2022
 autosize: true
 
 Introducción
@@ -33,8 +33,8 @@ s_n
 ```
 
 ```
- [1]   1   3   6  10  15  21  28  36  45  55  66  78  91 105 120 136 153
-[18] 171 190 210 231 253 276 300 325
+ [1]   1   3   6  10  15  21  28  36  45  55  66  78  91 105 120 136 153 171 190
+[20] 210 231 253 276 300 325
 ```
 
 

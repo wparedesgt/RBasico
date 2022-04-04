@@ -1,11 +1,11 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="tidyverse.jpg">
 </p>
 
 Tibbles
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Mayo 2022
 autosize: true
 
 Introducción
@@ -47,15 +47,10 @@ El tbl, pronunciado tibble, es un tipo especial de dataframe. Las funciones grou
 
 ========================================================
 Los tibbles son muy similares a los dataframes. De hecho, puede pensar en ellos como una versión moderna de ellos. No obstante, hay tres diferencias importantes que describiremos.
-
 - Los tibbles se ven mejor
-
 - El método de impresión para tibbles es más legible que el dataframe. Para ver esto, compare los resultados de los asesinatos normal o si lo convertimos en un tibble.
-
 - Podemos hacer esto usando as_tibble(murders). Si usa RStudio, la salida para un tibble se ajusta al tamaño de su ventana. 
-
 - #Los subset en un tibble son tibbles.
-
 
 ========================================================
 Podemos recuperar un objeto que no es un dataframe, como un vector. Por ejemplo:
@@ -180,7 +175,7 @@ class(grades$names)
 ```
 
 ```
-[1] "factor"
+[1] "character"
 ```
 
 

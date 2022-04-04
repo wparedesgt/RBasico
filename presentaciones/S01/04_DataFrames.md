@@ -5,7 +5,7 @@
 DataFrames
 ========================================================
 author: William V. Paredes
-date: Agosto 2019
+date: Marzo 2022
 autosize: true
 
 Introducción

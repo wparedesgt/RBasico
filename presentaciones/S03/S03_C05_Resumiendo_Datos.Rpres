@@ -1,12 +1,12 @@
 <p align="center">
-<img src="logomingob2018.png">
+<img src="tidyverse.jpg">
 </p>
 
 
 Resumiendo Datos
 ========================================================
 author: William V. Paredes
-date: Agosto-Septiembre 2019
+date: Mayo 2022
 autosize: true
 
 Introducción
