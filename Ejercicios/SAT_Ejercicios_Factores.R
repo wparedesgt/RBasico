@@ -58,9 +58,11 @@ z
 
 z <- factor(c("p", "q", "p", "r", "q"))
 
+z
+
 #y los niveles de z  son: "p", "q" ,"r", escriba una expresión en R que pueda cambiar el nivel de “p” a “w” para que z z sea igual al resultado siguiente: "w", "q" , "w", "r" , "q".
 
-levels(z)[1] <- "w"
+levels(z)[1] <- "j"
 
 z
 

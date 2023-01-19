@@ -21,7 +21,7 @@ Name <- c("Alex", "Lilly", "Mark", "Oliver", "Martha", "Lucas", "Caroline")
 Age <- c(25, 31, 23, 52, 76, 49, 26)
 Height <- c(177, 163, 190, 179, 163, 183, 164)
 Weight <- c(57, 69, 83, 75, 70, 83, 53)
-Sex <- as.factor(c("M", "M", "F", "F", "M", "F", "M"))
+Sex <- as.factor(c("Masculino", "Masculino", "Femenino", "Femenino", "Masculino", "Femenino", "Masculino"))
 
 #Creando el Data Frame
 
@@ -29,15 +29,15 @@ df <- data.frame (row.names = Name, Age, Height, Weight, Sex)
 
 str(df)
 
-df
-
 #Asignando los niveles
 
 levels(df$Sex) <- c("M", "F")
 
+
 #Consultando el resultado
 
 df
+
 
 
 #Ejercicio 2
@@ -91,10 +91,10 @@ ncol(dfa)
 
 dim(dfa)
 
-
 #b) ¿Qué clase de datos hay en cada columna?
 
 #Usando la funcion sapply()
+
 sapply(dfa, class)
 
 #Usando mi funcion preferida str()
@@ -136,6 +136,8 @@ df
   
 #Creando los vectores
 
+set.seed(20)
+
 v <- c(45:41, 30:33)
 b <- LETTERS[rep(1:3, 3)]
 n <- round(rnorm(9, 65, 5))
@@ -152,6 +154,8 @@ df[with (df, order(Age)),]
 #Otra solucion valida
 
 df[order(df$Age), ]  
+
+
 
 
 #Ejercicio 5
@@ -192,8 +196,7 @@ VADeaths
 
 df <- as.data.frame(VADeaths)
 
-df
-
+class(df)
 
 #b) Cree una nueva variable, llamada Total, que es la suma de cada fila.
 
@@ -206,7 +209,6 @@ df$Total <- rowSums(df)
 
 df$Total <- rowSums(df[1:4])
 
-df
 
 #Otra solucion
 
@@ -217,7 +219,7 @@ df
 #c) Cambie el orden de las columnas para que el total sea la primera variable.
 
 
-df <- df[, c(5, 1:4)]
+df <- df[,c(5, 1:4)]
 
 #tambien
 

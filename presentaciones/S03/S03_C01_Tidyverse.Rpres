@@ -14,7 +14,7 @@ Hasta ahora hemos estado manipulando vectores reordenándolos y subconjuntándol
 
 Introducción
 ========================================================
-En este capítulo aprendemos a trabajar directamente con dataframes, lo que facilita enormemente la organización de la información. Utilizaremos dataframes para la mayoría de este libro. Nos centraremos en un formato de datos específico denominado ordenado o (tidy) y en una colección específica de paquetes que son particularmente útiles para trabajar con datos ordenados (tidy) denominados tidyverse.
+En este capítulo aprendemos a trabajar directamente con dataframes, lo que facilita enormemente la organización de la información. Utilizaremos dataframes para la mayoría de casos. Nos centraremos en un formato de datos específico denominado ordenado o (tidy) y en una colección específica de paquetes que son particularmente útiles para trabajar con datos ordenados (tidy) denominados tidyverse.
 
 Introducción
 ========================================================
