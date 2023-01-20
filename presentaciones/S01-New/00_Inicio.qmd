@@ -1,7 +1,9 @@
 ---
 title: "Introducción Analisis de Datos"
-format: pptx
-editor: visual
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
 ---
 
 ## Bienvenidos
