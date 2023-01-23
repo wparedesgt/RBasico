@@ -24,3 +24,55 @@ La respuesta inicial es no, nuestro cerebro no es capaz de procesar identificar 
 ![](imagen/Brain_02.jfif)
 
 **El análisis de datos es una capacidad difícil de adquirir.** Sin embargo, no es imposible, sino lo fundamental es irla practicando y como todo hacerla un hábito. Como lo vamos a lograr nosotros, con pequeños ejercicios y práctica, todos comenzaremos en nivel cero y de allí ir partiendo a un ritmo suave, para ir entendiendo la base del análisis de datos.
+
+## Primer Ejercicio
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Vamos a ir al lugar asignado a cada compañero de los que estamos en este curso, nos paramos 5 segundos máximo enfrente de cada escritorio, no abrimos nada solo observamos. Lo primero es que vamos a deshumanizar el lugar, hagamos de cuenta que no lo conocemos y que vamos a perfilar un lugar de un extraño, claro existe ya un sesgo previo al conocer al compañero, pero tal vez en este ejercicio notemos algo que habíamos pasado por alto. | -   ¿Es hombre o mujer quien se sienta en ese espacio actualmente? |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                    |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                      | -   ¿Es ordenado?                                                  |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                    |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                      | -   ¿Puede definir una personalidad?                               |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
+![](imagen/Ejercicio01.png){width="152"}
+
+## ¿Como vamos a dividir la capacitación o en que nos vamos a centrar?
+
+Tal como comentamos en algunos párrafos anteriores el ser humano es extremadamente malo para analizar grandes volúmenes de datos, vamos a utilizar las maquinas y con ellas lenguajes diseñados para esta tarea.
+
+Hoy en día existen múltiples herramientas de código abierto y con licenciamiento.
+
+## De codigo abierto
+
+![R URL = https://cran.r-project.org](imagen/R_logo.svg.png){width="80"}
+
+## De codigo abierto
+
+![RStudio URL = https://posit.co/](imagen/RStudio.png){width="80"}
+
+## De codigo abierto
+
+![Python URL = https://www.python.org/downloads/](imagen/Python.jfif){width="80"}
+
+## De codigo abierto
+
+![Julia URL = https://julialang.org/](imagen/Julia.png){width="80"}
+
+## Algunas con licenciamiento:
+
+![SPSS URL = https://www.ibm.com/products/spss-statistics](imagen/SPSS.jfif){width="80"}
+
+## Algunas con licenciamiento:
+
+![STATA URL = https://stata.softonic.com/](imagen/STATA.png){width="80"}
+
+## Algunas con licenciamiento:
+
+![SAS URL = https://www.sas.com/es_mx/software/on-demand-for-academics.html](imagen/SAS_logo.svg.png){width="80"}
+
+## ¿ Un programador puede ser analista de datos?
+
+
+
+**El análisis de datos no está reservado únicamente para aquellos que estudian informática**, sino por el contrario está dirigido a aquellos que quieren estudiar los distintos métodos de recopilación, procesamiento y análisis de datos, para que nos permita entender, interpretar y predecir fenómenos reales.
