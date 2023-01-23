@@ -45,7 +45,7 @@ En teoria a esta altura ya tienen instalado r y rstudio en su equipo, asi que ma
 # En seguida asignaremos mediante código de R el valor 2022 a una
 # variable llamada 'x':
 
-x <- 2022
+x <- 2023
 
 ```
 
