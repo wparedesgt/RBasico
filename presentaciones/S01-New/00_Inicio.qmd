@@ -71,8 +71,32 @@ Hoy en día existen múltiples herramientas de código abierto y con licenciamie
 
 ![SAS URL = https://www.sas.com/es_mx/software/on-demand-for-academics.html](imagen/SAS_logo.svg.png){width="80"}
 
-## ¿ Un programador puede ser analista de datos?
-
-
+## ¿Quien puede ser analista de datos?
 
 **El análisis de datos no está reservado únicamente para aquellos que estudian informática**, sino por el contrario está dirigido a aquellos que quieren estudiar los distintos métodos de recopilación, procesamiento y análisis de datos, para que nos permita entender, interpretar y predecir fenómenos reales.
+
+## Fase I
+
+**Aprenderemos lo básico**, desde instalar, desinstalar el programa, actualizarlo, ver la interfase presentar y comenzar a aprender la utilización de las hojas de trucos.
+
+Veremos como se dividen los datos, desde su base hasta sus modelos más complejos, desde allí comenzaremos con pequeñas prácticas de análisis sencillas, como uno mas uno es igual a dos y así ir poniendo complejidad de una manera escalar y comprensible.
+
+## Fase II
+
+**Domado de Datos**, esta es un área compleja ya que nos dará la capacidad de extraer, transformar y cargar los datos desde cualquier fuente, ya sea interna o externa. Aquí se queda la mayoría de las personas acorde a mi experiencia, sin embargo, no podemos darnos este lujo por lo que está será la fase mas larga y delicada de todo este proceso.
+
+## Fase III
+
+**Visualización de los datos**, tomaremos nuestra primera introducción a los modelos estadísticos y de que forma aplicar las geometrías primero para nuestro uso, segundo para elaborar un proyecto y tercero para presentación al cliente final.
+
+## Fase IV
+
+**Estadística**, veremos los términos, leyes y todo lo referente a modelos predictivos, regresiones lineares, paradojas, distribuciones normales, bimodales, multimodales y de poisson.
+
+## Fase V
+
+**Algoritmos**, machine y Deep Learning, aplicación de inteligencia artificial para el análisis de los datos.
+
+## FIN DE PRESENTACION
+
+![](imagen/Analisis2.jfif)
