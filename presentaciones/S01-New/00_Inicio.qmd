@@ -1,26 +1,26 @@
 ---
-title: "Introducción Analisis de Datos"
+title: "Introducción Análisis de Datos"
 author: "William V. Paredes"
 format: 
-  pptx:
-    reference-doc: wvparedes.pptx
+    pptx:
+      reference-doc: wvparedes.pptx
+editor: visual
 ---
 
-## Bienvenidos
+## Sobre está capacitación:
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+![](imagen/DS01.png){width="161"}
 
-## Bullets
+Generalmente los cursos, capacitaciones y seminarios se dan con el fin de tener una idea base en la cual el profesional se pueda desarrollar de un modo auto didáctico sobre la rama en la que tiene curiosidad o que conforma parte del desarrollo integral de su profesión.
 
-When you click the **Render** button a document will be generated that includes:
+## ¿El ser humano es bueno para analizar datos?
 
--   Content authored with markdown
--   Output from executable code
+![](imagen/Analisis_Brain.jfif){width="153"}
 
-## Code
+La respuesta inicial es no, nuestro cerebro no es capaz de procesar identificar o agrupar volúmenes grandes de datos, segmentarlos, calcularlos y buscar fenómenos, patrones o inconsistencias en los mismos.
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+## ¿Un analista de datos nace o se hace?
 
-```{r}
-1 + 1
-```
+![](imagen/Brain_02.jfif)
+
+**El análisis de datos es una capacidad difícil de adquirir.** Sin embargo, no es imposible, sino lo fundamental es irla practicando y como todo hacerla un hábito. Como lo vamos a lograr nosotros, con pequeños ejercicios y práctica, todos comenzaremos en nivel cero y de allí ir partiendo a un ritmo suave, para ir entendiendo la base del análisis de datos.
