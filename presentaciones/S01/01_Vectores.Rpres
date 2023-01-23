@@ -55,7 +55,7 @@ Tipos de Vectores
 Varios tipos de vectores se utilizan comúnmente en el aprendizaje automático: enteros (números sin decimales), dobles (números con decimales), caracteres (datos de texto) y lógicos (valores VERDADEROS o FALSOS). También hay dos valores especiales: NULL, que se utiliza para indicar la ausencia de cualquier valor, y NA, que indica un valor faltante.
 
 
-Funcion de combinación
+Funcion de combinación 
 ========================================================
 
 Es tedioso ingresar grandes cantidades de datos manualmente, pero se pueden crear pequeños vectores usando la función de combinación c (). También se le puede dar un nombre al vector mediante el operador de flecha <, que es la forma en que R asigna valores, al igual que el operador de asignación = se usa en muchos otros lenguajes de programación.
