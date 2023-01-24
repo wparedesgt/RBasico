@@ -1,0 +1,183 @@
+---
+title: "Estructuras de R"
+author: "William V. Paredes"
+format: 
+    pptx:
+      reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+Existen numerosos tipos de estructuras de datos en todos los lenguajes de programación, cada uno con fortalezas y debilidades, los cuales son adecuados para tareas particulares.
+
+Dado que R es un lenguaje de programación utilizado ampliamente para el análisis de datos, machine learning y depp learning, las estructuras de datos que utiliza fueron diseñadas con este tipo de trabajo en mente.
+
+## ¿Qué tipo de tipo de estructuras utiliza R?
+
+R puede adoptar otras estructuras de distintos lenguajes, pero nos centraremos en las que vamos a utilizar con mayor frecuencia teniendo como fin alcanzable poder generar código de aprendizaje automático, profundo e inteligencia artificial.
+
+## Las cuales son:
+
+-   Vectores
+
+-   Factores
+
+-   Listas
+
+-   Matrices
+
+-   Marcos de Datos o Dataframes
+
+## Los Tibbles
+
+![](imagen/dplyr.png){width="242"}
+
+## R contempla un tipo de dataframe
+
+Con mayores propiedades, el cual se puede generar a través de una librería especifica y se le llama "tibble" o "tbl", lo veremos próximamente, aunque por experiencia hay algunos algoritmos que no son capaces de trabajar con este tipo de dataframe y también hay algunas librerías estadísticas que no soportan este formato, el formato tbl es muy potente si tenemos en mente raspados web, importación de datos o los típicos ETL.
+
+## Vectores
+
+El vector es la estructura de datos fundamental en R, este se encarga de almacenar un conjunto de valores ordenados llamados elementos.
+
+Un vector puede contener cualquier numero de elementos, sin embargo, todos los elementos deben de ser del mismo tipo de valor.
+
+Es decir, si un vector es numérico todos los elementos deben de ser numéricos, al igual si el vector fuera texto o lógico.
+
+## Ejemplo
+
+Tomemos el siguiente ejemplo:
+
+```{r echo=TRUE}
+
+w <- c(TRUE, FALSE, TRUE)
+x <- c(1:10)
+y <- c("a", "b", "c")
+z <- c(1-9)
+
+
+```
+
+## Resultados
+
+```{r echo=TRUE}
+
+typeof(w)
+typeof(x)
+typeof(y)
+typeof(z)
+
+
+```
+
+## Observaciones
+
+Como observamos tenemos un tipo de valor lógico, entero, carácter y doble. En ninguno de los objetos w,x,y,z podemos meter tipos de datos que no sean los que corresponden a cada uno.
+
+## Tipos de Vectores
+
+Varios tipos de vectores se utilizan comúnmente en el aprendizaje automático entre los cuales podemos nombrar los siguientes:
+
+-   Enteros (números sin decimales)
+-   Dobles (números con decimales)
+-   Caracteres (datos de texto)
+-   Lógicos (valores VERDADEROS o FALSOS)
+
+## Valores Especiales
+
+-   NULL, que se utiliza para indicar la ausencia de cualquier valor
+-   NA, que indica un valor faltante
+
+## Función de Combinación
+
+Es tedioso ingresar grandes cantidades de datos manualmente, pero se pueden crear pequeños vectores usando la función de combinación c ().
+
+```{r echo=TRUE}
+
+ejemplo <- c(1:1000)
+head(ejemplo)
+tail(ejemplo)
+
+```
+
+## Motivación
+
+Entre la documentación conforme se desarrolla mostraremos de a poco algunas pequeñas cosas que podemos ir haciendo ya en un preproceso de análisis de datos.
+
+En esta ocasión crearemos un pequeño vector con números del 1 al 10 y extraeremos 5 datos, es decir un 50% de las observaciones del objeto y que las muestras no se repitan.
+
+## Código
+
+```{r echo=TRUE}
+x <- c(1:10)
+w <- sample(x, 5, replace = FALSE, prob = NULL)
+w
+
+```
+
+## Ejemplo Practico
+
+Crearemos 3 vectores de esta forma:
+
+```{r echo=TRUE}
+
+subject_name <- c("John Doe", "Jane Doe", "Steve Graves")
+temperature <- c(98.1, 98.6, 101.4)
+flu_status <- c(FALSE, FALSE, TRUE)
+
+
+```
+
+## Orden Inherente
+
+Los vectores de R están ordenados de forma inherente es decir que es esencial y permanente en un ser o en una cosa o no se puede separar de él por formar parte de su naturaleza y no depender de algo externo.
+
+Por ello se puede acceder a los registros contando por el numero de elementos en el conjunto, comenzando por el uno. Para ello rodeamos el numero entre corchetes \[\] después del nombre del vector.
+
+## Obteniendo Información
+
+Para obtener la temperatura del segundo dato del vector de "temperature" tendríamos que escribir el siguiente código:
+
+```{r echo=TRUE}
+
+temperature[2]
+
+```
+
+## Métodos
+
+R ofrece una variedad de métodos convenientes para extraer datos de vectores. Podemos obtener un rango de valores o guardarlos utilizando el operador de dos puntos (:). Veamos el código de cómo obtener la temperatura del vector 2 y 3.
+
+```{r echo=TRUE}
+
+temperature[2:3]
+
+```
+
+## Exclusiones
+
+Se puede excluir información especificando la posición con numero negativo, por ejemplo, excluyamos y guardemos en otro objeto la temperatura con posición 2.
+
+```{r echo=TRUE}
+temperature[-2]
+temperatura2 <- temperature[-2]
+temperatura2
+
+```
+
+## Vector Lógico
+
+Finalmente, a veces también es útil especificar un vector lógico que indique si se debe incluir cada elemento. Por ejemplo, para incluir las dos primeras lecturas de temperatura, pero excluir la tercera, escriba:
+
+```{r echo=TRUE}
+temperature[c(TRUE, TRUE, FALSE)]
+```
+
+## Finalizando
+
+Como verá en breve, el vector proporciona la base para muchas otras estructuras de datos R. Por lo tanto, el conocimiento de las diversas operaciones vectoriales es crucial para trabajar con datos en R.
+
+## Gracias
+
+![](imagen/Data_Analisis.png){width="282"}
