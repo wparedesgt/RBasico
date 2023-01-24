@@ -1,0 +1,110 @@
+---
+title: "Factores"
+author: "William V. Paredes"
+format: 
+    pptx:
+      reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## ¿Qué es un factor?
+
+Un factor es un caso especial de vector que se usa únicamente para representar variables categóricas u ordinales.
+
+En el conjunto de datos médicos que estamos construyendo, podríamos usar un factor para representar el género, porque usa dos categorías: **MASCULINO Y FEMENINO**.
+
+## ¿Es importante un factor?
+
+Si tenemos en mente usar algoritmos de **"machine o deep learning"**, para entrenar nuestros equipos en clasificación de datos, debemos de prestar especial atención a este tipo de estructura, ya que nuestros algoritmos tomarán para su entrenamiento generalmente un factor. Este paso es predeterminante y realmente importante en donde todo el proyecto puede salir mal o bien si no se presta especial atención.
+
+## ¿Por qué no usar vectores?
+
+Una ventaja de los factores es que las etiquetas de categoría se almacenan solo una vez.
+
+Por ejemplo, en lugar de almacenar **MALE, MALE, FEMALE,** la computadora puede almacenar **1, 1, 2**, lo que reduce el tamaño de la memoria necesaria para almacenar la misma información.
+
+## ¿Por qué no usar vectores?
+
+Además, muchos algoritmos de aprendizaje automático o machine learning, tratan los datos nominales y numéricos de manera diferente. La codificación como factores a menudo es necesaria para informar a una función de R para tratar los datos categóricos de manera adecuada.
+
+## Atributos de un factor
+
+![](imagen/Factor.jpg){width="297"}
+
+## 
+
+![](imagen/Aviso%20Importante.jfif)
+
+No se debe usar un factor para los vectores de caracteres que no son realmente categóricos. Si un vector almacena en su mayoría valores únicos como nombres o cadenas de identificación, manténgalo como un vector.
+
+## Creando un Factor
+
+Para crear un factor a partir de un vector de caracteres, simplemente aplique la función factor ().
+
+```{r echo=TRUE}
+gender <- factor(c("MALE", "FEMALE", "MALE"))
+gender
+```
+
+## Observe
+
+Cuando se mostraron los datos de género de John Doe y Jane Doe, R imprimió información adicional sobre el factor de género. La variable de niveles comprende el conjunto de posibles categorías que el factor podría tomar, en este caso: **MASCULINO, FEMENINO.**
+
+## Niveles Adicionales
+
+Cuando creamos factores, podemos agregar niveles adicionales, que pueden no aparecer en los datos. Supongamos que agregamos otro factor para el tipo de sangre, como se muestra en el siguiente ejemplo:
+
+```{r echo=TRUE}
+blood <- factor(c("O", "AB", "A"), levels = c("A", "B", "AB", "O"))
+```
+
+## Nivel Adicional
+
+Cuando definimos el factor sanguíneo para los tres pacientes, especificamos un vector adicional de cuatro tipos de sangre posibles usando el parámetro o argumento de levels.
+
+Como resultado, aunque nuestros datos solo incluyeron los tipos O, AB y A, los cuatro tipos se almacenan con el factor sanguíneo como lo indica la salida.
+
+## Nivel Adicional
+
+Almacenar el nivel adicional permite la posibilidad de agregar datos con otros tipos de sangre en el futuro. También garantiza que, si tuviéramos que crear una tabla de tipos de sangre, sabríamos que existe el tipo B, a pesar de que no se registra en nuestros datos.
+
+## Categorías y Variables Nominales
+
+La estructura de datos de factores también nos permite incluir información sobre el orden de las categorías de una variable nominal, lo que proporciona una manera conveniente de almacenar datos ordinales.
+
+Mas adelante cuando estemos viendo la parte de machine learning, vamos a poder ver como el orden de las categorías nos puede ayudar en el caso de la especificialidad y sensibilidad de un algoritmo de clasificación en una matriz de confusión.
+
+## Ejemplo
+
+Vamos a suponer que tenemos los datos sobre la gravedad de los síntomas de un paciente, siendo estos codificados en un nivel creciente acorde a su gravedad. Es decir, desde leve, moderada y grave.
+
+En este caso como ya tenemos el vector identificado como categórico, vamos a enumerar los niveles en orden ascendente de menor a mayor y finalmente vamos a establecer el argumento "ordered" igual a verdadero, de esta manera queda ordenada de manera implícita la categoría de menor a mayor.
+
+## Codigo
+
+```{r echo=TRUE}
+symptoms <- factor(c("SEVERE", "MILD", "MODERATE"),levels = c("MILD", "MODERATE", "SEVERE"), ordered = TRUE)
+```
+
+## Prueba Lógica
+
+Una característica útil que incluso es aprovechada por los algoritmos de clasificación en los factores ordenados es que las pruebas lógicas funcionarán como uno espera.
+
+## Ejemplo
+
+Vamos a probar si los síntomas del supuesto paciente son más que moderados.
+
+```{r echo=TRUE}
+symptoms > "MODERATE"
+
+```
+
+## Nuevamente Recordatorio
+
+Los algoritmos de aprendizaje automático (machine learnig) capaces de modelar datos categóricos esperarán y asumen que los factores están ordenados, así que asegúrese desde un inicio codificar sus datos en consecuencia.
+
+Este simple paso representa en muchas ocasiones si está mal realizado, el fracaso del entrenamiento en un proyecto.
+
+## Gracias
+
+![](imagen/forcats.png)
