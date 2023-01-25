@@ -1,0 +1,81 @@
+---
+title: "Matrices"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## ¿Qué es una matriz de datos?
+
+Además de los marcos de datos o dataframes que vimos en los temas anteriores, R proporciona otras estructuras que almacenan valores en forma tabular. Una matriz es una estructura de datos que representa una tabla bidimensional con filas y columnas de datos.
+
+Al igual que los vectores, las matrices de R pueden contener cualquier tipo de datos, aunque por regla general se utilizan con mayor frecuencia para operaciones matemáticas, por lo tanto, generalmente solo almacenan datos numéricos.
+
+## Matriz
+
+![](imagen/RMatrixTuto.png){width="262"}
+
+## ¿Como la creamos?
+
+Para crear una matriz, simplemente proporcione un vector de datos a la función matrix () junto con un parámetro que especifique el número de filas (nrow) o el número de columnas (ncol).
+
+Por ejemplo, para crear una matriz de 2 x 2 que almacene los números del uno al cuatro, podemos usar el parámetro nrow para solicitar que los datos se dividan en dos filas:
+
+## Codigo
+
+```{r echo=TRUE}
+m <- matrix(c(1, 2, 3, 4), nrow = 2)
+m
+```
+
+## O podemos hacerlo también así
+
+```{r echo=TRUE}
+m <- matrix(c(1:4), nrow = 2)
+m
+```
+
+## Algo que notar
+
+Notarán que R cargó la primera columna de la matriz primero antes de cargar la segunda columna. Esto se denomina orden mayor de columna y es el método predeterminado de R para cargar matrices.
+
+
+## Anulando Predeterminado
+
+Para anular esta configuración predeterminada y cargar una matriz por filas, establezca el parámetro **byrow = TRUE**, al crear la matriz.
+
+```{r echo=TRUE}
+m <- matrix(c(1:4), nrow = 2, byrow = TRUE)
+m
+```
+
+## En mayor detalle
+
+Para ilustrar esto con más detalle, veamos qué sucede si agregamos más valores a la matriz.
+Con seis valores, la solicitud de dos filas crea una matriz con tres columnas:
+
+```{r echo=TRUE}
+m <- matrix(c(1:6), nrow = 2)
+m
+```
+
+## Ahora si solicitamos dos columnas crea una matriz con tres filas.
+
+```{r echo=TRUE}
+m <- matrix(c(1:6), ncol = 2)
+m
+```
+
+## Igual Extracción
+
+Al igual que con los marcos de datos, los valores en matrices se pueden extraer usando la notación [fila, columna]. Por ejemplo, m [1, 1] devolverá el valor 1 y m [3, 2] extraerá 6 de la matriz m. Además, se pueden solicitar filas o columnas completas:
+
+```{r echo=TRUE}
+m[1,]
+m[,1]
+
+```
+
+
