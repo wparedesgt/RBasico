@@ -1,0 +1,223 @@
+---
+title: "Indexando"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+R proporciona una forma poderosa y conveniente de indexar vectores. Podemos, por ejemplo, subconjuntar un vector basado en las propiedades de otro vector.
+
+Es muy importante prestarle mucha atención a este tema, tiene el mismo peso de los factores y al dominarlo es de suma importancia pues es una parte importante en operaciones como simulaciones de Montecarlo, exploración de datos, regresiones y muchas otras operaciones que realizaremos mas adelante.
+
+## Imagen
+
+![](imagen/indexgandolf.png){width="285"}
+
+## Librerías
+
+Rápidamente podemos explicar que una librería es una extensión de R, la cual nos permite ampliar la funcionalidad del lenguaje.
+
+Para instalar una librería simplemente introducimos el siguiente código:
+
+```{r echo=TRUE}
+
+library(dslabs)
+
+```
+
+## Librería DSLABS
+
+Está es una de las primeras librerías que usaremos, fue creada por el señor Rafael Irizarry, profesor de bioestadística y biología computacional en la Universidad de Harvard, fundador del proyecto "Bioconductor".
+
+https://en.wikipedia.org/wiki/Rafael_Irizarry\_(scientist) https://www.bioconductor.org/
+
+## Documentacion DSLABS
+
+Es una de las librerías principales que la Universidad de Harvard utiliza para enseñar bio estadística y ciencia de datos en sus instalaciones.
+
+Aquí su documentación:
+
+https://cran.r-project.org/web/packages/dslabs/dslabs.pdf
+
+## Murders
+
+En esta sección, iniciaremos trabajando con un ejemplo de datos de asesinatos en EE. UU., que contiene la librería dslabs el cual podemos cargar así:
+
+```{r echo=TRUE}
+library(dslabs)
+data("murders")
+```
+
+## Tasa de asesinatos
+
+Vamos a crear un objeto en donde calcularemos la tasa de asesinatos por cada 100,000 habitantes en USA, con la formula:
+
+-   Total/Población \* Cantidad de Habitantes
+
+Aquí el código de dos formas de hacerlo.
+
+```{r echo=TRUE}
+murder_rate <- murders$total / murders$population * 100000 
+murder_rate <- murders$total / murders$population * 10^5
+```
+
+## Problema de traslado
+
+Imagine que vive en Italia donde, según un informe de noticias de ABC, la tasa de asesinatos es de solo 0.71 por cada 100,000 habitantes.
+
+Y debe ir a vivir a USA por un par de años; En donde claro preferiría mudarse a un estado con una tasa de homicidios similar.
+
+## Subconjuntos Lógicos
+
+Otra característica poderosa de R es que podemos usar la lógica para indexar vectores. Si comparamos un vector con un solo número, en realidad realizará la prueba para cada entrada.
+
+En el siguiente es un ejemplo pondremos un código relacionado con la pregunta anterior en el cual crearemos un índice lógico que nos va a indicar que estados tienen una tasa inferior a 071:
+
+## Código
+
+```{r echo=TRUE}
+ind <- murder_rate < 0.71
+ind
+```
+
+## Revisión
+
+Como vemos en el resultado nos arroja en un vector lógico cuales cumplen con la condición (TRUE) y cuales no (FALSE).
+
+Si, en cambio, queremos saber si un valor es menor o igual, podemos usar:
+
+## Código 2
+
+```{r echo=TRUE}
+ind <- murder_rate <= 0.71
+ind
+```
+
+## Resultado
+
+Nuevamente nos da como resultado un vector lógico con los que cumplen la condición solicitada.
+
+## Recuperando la información
+
+Para recuperar la información con este índice dentro de nuestro dataframe vamos a utilizar el siguiente código, aprovechando el hecho de que los vectores pueden indexarse lógicamente.
+
+```{r echo=TRUE}
+murders$state[ind]
+```
+
+## Revisando
+
+Como vemos en los resultados, realmente trae los datos que traemos del índice, vamos a continuar con unos ejemplos más.
+
+Para contar cuántos son VERDADEROS, la suma de funciones devuelve la suma de las entradas de un vector.
+
+## Sumando
+
+Los vectores lógicos se convierten en numéricos con VERDADERO codificado como 1 y FALSO como 0. Por lo tanto, podemos contar los estados usando:
+
+```{r echo=TRUE}
+
+sum(ind)
+
+```
+
+## Operadores Lógicos
+
+Supongamos que nos gustan las montañas y queremos mudarnos a un estado seguro en la región occidental de ese país. Queremos que la tasa de asesinatos sea como máximo 1.
+
+En este caso, queremos que dos cosas diferentes sean ciertas.
+
+Aquí podemos usar el operador lógico, que en R se representa con **&**.
+
+Esta operación da como resultado **VERDADERO** solo cuando ambas lógicas son VERDADERAS.
+
+## Ejemplo
+
+```{r echo=TRUE}
+TRUE&TRUE
+TRUE&FALSE
+FALSE&FALSE
+```
+
+## Retormando a la pregunta
+
+Vivir en el occidente de USA y que la tasa de asesinatos sea como máximo 1 podemos tomar dos rutas.
+
+```{r echo=TRUE}
+west <- murders$region == "West"
+safe <- murder_rate <= 1
+murders$state[west & safe]
+```
+
+## Creando un Indice
+
+Creamos un índice con un vector lógico de esta manera:
+
+```{r echo=TRUE}
+ind <- safe & west
+murders$state[ind]
+```
+
+## Función which()
+
+Supongamos que queremos ver la tasa de homicidios de California.
+
+Para este tipo de operación, es conveniente convertir vectores de lógicos en índices en lugar de mantener largos vectores de lógicos.
+
+La función which(), nos dice qué entradas de un vector lógico son VERDADERAS.
+
+## Código
+
+```{r echo=TRUE}
+ind <- which(murders$state == "California")
+murder_rate[ind]
+```
+
+## Función match()
+
+Si en lugar de un solo estado queremos averiguar las tasas de homicidio de varios estados, digamos Nueva York, Florida y Texas, podemos usar la función match().
+
+Esta función nos dice qué índices de un segundo vector coinciden con cada una de las entradas de un primer vector:
+
+## Código
+
+```{r echo=TRUE}
+ind <- match(c("New York", "Florida", "Texas"), murders$state)
+ind
+murder_rate[ind]
+```
+
+## Función %in%
+
+Si en lugar de un índice queremos una lógica que nos diga si cada elemento de un primer vector está en un segundo, podemos usar la función %in%.
+
+Imaginemos que no está seguro de si Boston, Dakota y Washington son estados.
+
+## Código
+
+```{r echo=TRUE}
+c("Boston", "Dakota", "Washington") %in% murders$state
+```
+
+**Tenga en cuenta que usaremos %in% a menudo en todo el curso.**
+
+## Avanzado
+
+Hay una conexión entre coincidencias e %in%.
+
+Para ver esto, observe que las siguientes dos líneas producen el mismo índice (aunque en orden diferente):
+
+## Código
+
+```{r echo=TRUE}
+match(c("New York", "Florida", "Texas"), murders$state)
+which(murders$state%in%c("New York", "Florida", "Texas"))
+```
+
+## Gracias
+
+![](imagen/VectorsinR.jpg){width="461"}

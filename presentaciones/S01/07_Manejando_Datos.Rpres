@@ -18,7 +18,6 @@ Cuando haya pasado mucho tiempo obteniendo un marco de datos en el formulario de
 
 ========================================================
 ```{r}
-
 x <- c(1:50)
 y <- c("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 z <- factor(c("p", "q", "p", "r", "q"))

@@ -24,9 +24,8 @@ Subconjuntos Logicos
 Calcularemos la tasa de asesinatos usando:
 
 ```{r}
-
 murder_rate <- murders$total / murders$population * 100000 
-
+murder_rate <- murders$total / murders$population * 10^5
 
 ```
 
