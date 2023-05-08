@@ -1,0 +1,92 @@
+aa <-  15
+
+if(aa > 14) print("SI MAYOR")
+
+if(aa > 14){                 #Instruccion compuesta
+  print("Primer Reglon") 
+  print("Si Mayor")
+} 
+
+y <- 10
+z <- if(aa > 14) 50
+z
+
+
+if(10 > aa) {  #1mer Bloque
+  print("Rango Menor")
+} else if (10 <= aa && aa <= 20) {  #Segundo Bloque
+  print("Primer Renglon"); print("Rango Medio")
+} else { #Tercer Bloque
+  print("Rango Mayor")
+}
+
+letras <- c("c", "L", "i", "M", "T", "A")
+
+for (i in 1:6) {
+  print(letras[i])
+  
+}
+
+for (i in seq_along(letras)) {
+  print(letras[i])
+}
+
+for (letra in letras) {
+  print(letra)
+}
+
+letras <- c("c", "L", "i", "M", "T", "A")
+
+i <- 1
+
+while(i <= 6) {
+  print(letras[i])
+  i <- i + 1
+}
+
+i <- 1
+
+repeat {
+  print(letras[i])
+
+    i <-  i + 1
+  
+    if(i > 6)
+    break
+}
+
+set.seed(140) #Cualquier numero
+aprox <- 0.003 #Valor de la salida del ciclo
+Y_ini <- 2.7 #Valor inicial de Y supuesto
+for(iter in 1:1000) {  #Aseguro no mas de 1000 interaciones
+#Procedimiento para calcular la siguiente Y, que en este caso simularemos mediante un generador aleatorio
+Y <- Y_ini + 0.008*rnorm(1)
+if(abs(Y - Y_ini) <= aprox)
+  break #salir del ciclo
+Y_ini <- Y
+}
+
+paste("Y_ini", Y_ini, "Y:", Y, "Num.Iter", iter) #Unir el Resultado
+
+
+for(i in 1:7) {
+  if(3 <= i && i <= 5)
+    next
+  print(i)
+}
+
+MiFunc.v1 <- function(x,yyy,z=5, t) {
+  w <- x + yyy + z
+  w
+}
+
+MiFunc.v1(5,10,6)
+
+
+MiFunc.V2 <- function(x, yyy, z= 5, t) {
+  w <- x + yyy + z
+  return(w)
+  3.1416  #Aqui no se va a ejecutar nada
+}
+
+MiFunc.V2(5,10)
