@@ -1,0 +1,70 @@
+---
+title: "Tidy Data"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Tidy Data
+
+![](imagenes/tidydata_1.jpg)
+
+## Iniciando
+
+Podemos decir que el concepto de "tidy data", se refiere a unas tablas que se encuentran en un formato ordenado si cada fila representa una observación y las columnas representan las diferentes variables disponibles para cada una de estas observaciones.
+
+## murders
+
+En este caso veremos un conjunto de datos de la librería dslabs, llamado murders que es un dataframe en formato tidy.
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(dslabs)
+
+data(murders)
+```
+
+## murders
+
+```{r}
+head(murders)
+```
+
+## Analizando
+
+Vemos como cada fila representa un estado y cada una de las 5 columnas proporcionan variables diferentes en relación con los mismos: nombre, abreviatura, región, población y total que corresponde al No. De asesinatos por estado. Vamos a considerar el siguiente ejemplo para poder ver información en otros formatos:
+
+## Gapminder
+
+```{r, echo=TRUE}
+gapminder %>% filter(country == c("Germany", "South Korea")) %>% select(c(country, year, fertility)) %>% head()
+```
+
+## Conjunto de Datos
+
+Este conjunto de datos ordenado proporciona tasas de fertilidad para dos países a lo largo de los años. Este es un conjunto de datos ordenado porque cada fila presenta una observación con las tres variables: país, año y tasa de fertilidad. Sin embargo, este conjunto de datos originalmente vino en otro formato y se reformó para el paquete dslabs. Originalmente, los datos estaban en el siguiente formato:
+
+## Imagen
+
+![](imagenes/gapminder.jpg)
+
+## Obteniendo desde R
+
+```{r, echo=TRUE}
+dat <- read_csv("datos/sp_dyn_tfrt_in.csv")
+dat %>% filter(country == "Germany") %>% head()
+```
+
+## Que elementos se ven?
+
+Se proporciona la misma información, pero hay dos diferencias importantes en el formato: 
+
+
+-   Cada fila incluye varias observaciones. 
+-   Una de las variables, año, se almacena en el encabezado. 
+
+
+
+

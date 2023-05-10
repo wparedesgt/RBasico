@@ -1,0 +1,67 @@
+---
+title: "IF-ELSE"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+Estos funcionaran igual que en cualquier otro lenguaje de programación, la única salvedad es que en R estas funciones pueden ser capitalizadas, es decir las construcciones regresarán un valor que puede ser asignado a un objeto o ser utilizado de otras maneras creativas.
+
+## Ejemplos
+
+```{r, echo=TRUE, background= "#F7F7F7"}
+aa <-  15
+
+if(aa > 14) print("SI MAYOR")
+
+```
+
+
+## Instrucción Compuesta
+
+Cuando deseamos agregar más de un resultado a determinada ejecución podemos usar una instrucción compuesta la cual encerraremos entre paréntesis {} de esta forma:
+
+## Codigo
+
+```{r, echo=TRUE}
+
+if(aa > 14){                 #Instruccion compuesta
+  print("Primer Reglon") 
+  print("Si Mayor")
+} 
+
+
+```
+
+
+## Capitalización
+
+```{r, echo=TRUE}
+
+y <- 10
+z <- if(aa > 14) 50
+z
+
+
+```
+
+
+## Varios Operadores
+
+```{r, echo=TRUE}
+
+if(10 > aa) {  #1mer Bloque
+  print("Rango Menor")
+} else if (10 <= aa && aa <= 20) {  #Segundo Bloque
+  print("Primer Renglon"); print("Rango Medio")
+} else { #Tercer Bloque
+  print("Rango Mayor")
+}
+
+
+```
+

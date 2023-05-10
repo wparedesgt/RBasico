@@ -1,0 +1,130 @@
+---
+title: "Ciclos"
+author: "William Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+![](imagenes/estructuras-de-control.png)
+
+## Ciclos
+
+En R encontraremos varios tipos de funciones de ciclos o repeticiones, pudiendo ser que ser repitan los mismos un número determinado de veces ya prestablecido, cuando se cumpla o se deje de cumplir alguna condición o infinitas veces.
+
+## Inicio
+
+Comenzaremos con repeticiones con un número determinado de veces; Con repeticiones explicitas (es decir le asignaremos el valor de las repeticiones).
+
+## Código
+
+```{r, echo=TRUE, size="normalsize"}
+letras <- c("c", "L", "i", "M", "T", "A")
+for (i in 1:6) {
+  print(letras[i])
+}
+
+
+```
+
+
+## Implicito
+
+Podemos usar también código en donde el número de veces que se repita cierto ciclo quede implícito; En este caso usaremos la función seq_along() la cual nos va a generar una secuencia de enteros acorde al número de elementos que contenga el objeto. 
+
+
+## Código
+
+```{r, echo=TRUE}
+letras <- c("c", "L", "i", "M", "T", "A")
+for (i in seq_along(letras)) {
+  print(letras[i])
+}
+```
+
+## Esencia
+
+Podemos crear un código más simplificado y hacerlo aún más implícito, aprovechando la propia esencia de la función for() creando una construcción que tratara de ir tomando cada uno de los elementos del objeto consignado.
+
+
+## Código
+```{r, echo=TRUE}
+letras <- c("c", "L", "i", "M", "T", "A")
+for (letra in letras) {
+  print(letra)
+}
+```
+
+## Repeticiones con condición
+
+Podemos habilitar esta operación de ciclo con la función while(), sin embargo con ella debemos de tener mucho cuidado ya que tenemos si o si, que poner un objeto que indique un índice de entrada y salida ya que si no lo hacemos adecuadamente ocasionamos un ciclo infinito y sin salida. 
+
+
+## Código
+```{r, echo=TRUE}
+letras <- c("c", "L", "i", "M", "T", "A")
+i <- 1
+while(i <= 6) {
+  print(letras[i])
+  i <- i + 1
+}
+```
+
+## Repeticiones Infinitas
+Existe la función repeat() que realiza ciclos infinitos, el lenguaje posee facilidades para poder interrumpir el ciclo desde su interior cuando se cumpla una condición, lo cual veremos en el siguiente código:
+
+
+## Código
+```{r}
+letras <- c("c", "L", "i", "M", "T", "A")
+repeat {
+  print(letras[i])
+
+    i <-  i + 1
+  
+    if(i > 6)
+    break
+}
+```
+
+
+#Interrupción de los Ciclos
+Los ciclos pueden ser interrumpidos con 3 instrucciones diferentes, ya sea break, next o return.
+En el siguiente ejemplo vamos a usar un generador de numero aleatorios para tratar de explicar con claridad estos eventos.
+
+
+## Código
+```{r, echo=TRUE}
+set.seed(140) #Cualquier numero
+aprox <- 0.003 #Valor de la salida del ciclo
+Y_ini <- 2.7 #Valor inicial de Y supuesto
+for(iter in 1:1000) {  #Aseguro no mas de 1000 interaciones
+#Procedimiento para calcular la siguiente Y, que en este caso simularemos mediante un generador aleatorio
+Y <- Y_ini + 0.008*rnorm(1)
+if(abs(Y - Y_ini) <= aprox)
+  break #salir del ciclo
+Y_ini <- Y
+}
+```
+
+## Uniendo el resultado
+```{r, echo=TRUE}
+paste("Y_ini", Y_ini, "Y:", Y, "Num.Iter", iter) #Unir el Resultado
+```
+
+## Proximo Ejemplo
+
+En el siguiente ejemplo utilizaremos next para interrumpir flujo normal de la ejecución de una manera diferente, en vez de salir del ciclo, solamente impedirá la ejecución de las instrucciones siguientes, retornando al principio del ciclo nuevamente.
+
+## Codigo
+```{r, echo=TRUE}
+for(i in 1:7) {
+  if(3 <= i && i <= 5)
+    next
+  print(i)
+}
+```
+

@@ -90,3 +90,426 @@ MiFunc.V2 <- function(x, yyy, z= 5, t) {
 }
 
 MiFunc.V2(5,10)
+
+
+MiFunc.V3 <- function(x, yyy, z=5, t) {
+  x+yyy+z
+}
+
+MiFunc.V3(5,10)
+
+
+fibbonacci <- function(n) {
+  if(n %in% c(0,1))
+    return(1)
+  F0 <- 1
+  F1 <- 1
+  i <- 2
+  repeat {
+    s <- F0 + F1 #Suma de los fib anteriores
+    if(i == n) #Buscar el no.
+      return(s)
+    F0 <- F1
+    F1 <- s
+    i <- i+1 #Incrementamos el indice
+  }
+}
+
+fibbonacci(8)
+
+
+data("diamonds")
+
+data("iris")
+
+install.packages("tidyverse")
+install.packages("dslabs")
+
+
+library(tidyverse)
+library(dslabs)
+
+data(murders)
+
+head(murders)
+
+> head(murders)
+       state abb region population total
+1    Alabama  AL  South    4779736   135
+2     Alaska  AK   West     710231    19
+3    Arizona  AZ   West    6392017   232
+4   Arkansas  AR  South    2915918    93
+5 California  CA   West   37253956  1257
+6   Colorado  CO   West    5029196    65
+>
+
+
+gapminder %>% filter(country == c("Germany", "South Korea")) %>% select(c(country, year, fertility)) %>% head()
+
+> gapminder %>% filter(country == c("Germany", "South Korea")) %>% select(c(country, year, fertility)) %>% head()
+      country year fertility
+1     Germany 1960      2.41
+2 South Korea 1960      6.16
+3     Germany 1962      2.47
+4 South Korea 1962      5.79
+5     Germany 1964      2.49
+6 South Korea 1964      5.36
+
+
+dat <- read_csv("data/sp_dyn_tfrt_in.csv")
+dat %>% filter(country == "Germany") %>% head()
+
+
+library(tidyverse)
+library(dslabs)
+data("murders")
+
+murders <- mutate(murders, rate = total/population * 10^5)
+
+
+head(murders)
+       state abb region population total     rate
+1    Alabama  AL  South    4779736   135 2.824424
+2     Alaska  AK   West     710231    19 2.675186
+3    Arizona  AZ   West    6392017   232 3.629527
+4   Arkansas  AR  South    2915918    93 3.189390
+5 California  CA   West   37253956  1257 3.374138
+6   Colorado  CO   West    5029196    65 1.292453
+
+
+filter(murders, rate <= 0.71)
+          state abb        region population total      rate
+1        Hawaii  HI          West    1360301     7 0.5145920
+2          Iowa  IA North Central    3046355    21 0.6893484
+3 New Hampshire  NH     Northeast    1316470     5 0.3798036
+4  North Dakota  ND North Central     672591     4 0.5947151
+5       Vermont  VT     Northeast     625741     2 0.3196211
+
+
+new_table <- select(murders, state, region, rate)
+filter(new_table, rate <= 0.71)
+
+> new_table <- select(murders, state, region, rate)
+> filter(new_table, rate <= 0.71)
+          state        region      rate
+1        Hawaii          West 0.5145920
+2          Iowa North Central 0.6893484
+3 New Hampshire     Northeast 0.3798036
+4  North Dakota North Central 0.5947151
+5       Vermont     Northeast 0.3196211
+
+
+library(tidyverse)
+library(dslabs)
+data("murders")
+
+murders <- mutate(murders, rate = total/population * 10^5)
+
+murders %>% select(state, region, rate) %>% filter(rate <= 0.71)
+
+16 %>% sqrt() %>% log(base = 2)
+
+
+> 16 %>% sqrt()
+[1] 4
+> 4 %>% log(base = 2)
+[1] 2
+>
+
+murders %>% select(state, region, rate) %>% filter(rate <= 0.71)
+
+library(dplyr)
+library(dslabs)
+data(heights)
+
+
+s <- heights %>% 
+  filter(sex == "Female") %>%
+  summarize(promedio = mean(height), desviacion_standard = sd(height))
+s
+
+s$promedio
+s$desviacion_standard
+
+
+heights %>% 
+  filter(sex == "Female") %>%
+  summarize(median = median(height), minimum = min(height), maximum = max(height))
+
+
+> heights %>% 
++   filter(sex == "Female") %>%
++   summarize(median = median(height), minimum = min(height), maximum = max(height))
+    median minimum maximum
+1 64.98031      51      79
+> 
+
+heights %>% 
+  filter(sex == "Female") %>%
+  summarize(range = quantile(height, c(0, 0.5, 1)))
+  
+  
+> heights %>% 
++   filter(sex == "Female") %>%
++   summarize(range = quantile(height, c(0, 0.5, 1)))
+     range
+1 51.00000
+2 64.98031
+3 79.00000
+>
+
+data(murders)
+murders <- murders %>% mutate(rate = total/population*10^5)
+
+summarize(murders, mean(rate))
+
+us_murder_rate <- murders %>%
+  summarize(rate = sum(total) / sum(population) * 10^5)
+
+us_murder_rate
+
+class(us_murder_rate)
+
+> class(us_murder_rate)
+[1] "data.frame"
+
+us_murder_rate %>% pull(rate)
+
+
+us_murder_rate <- murders %>% 
+  summarize(rate = sum(total) / sum(population) * 10^5) %>%
+  pull(rate)
+
+us_murder_rate
+
+
+> class(us_murder_rate)
+[1] "numeric"
+>
+
+heights %>% group_by(sex) %>% head()
+
+
+
+> heights %>% group_by(sex) %>% head()
+# A tibble: 6 × 2
+# Groups:   sex [2]
+  sex    height
+  <fct>   <dbl>
+1 Male       75
+2 Male       70
+3 Male       68
+4 Male       74
+5 Male       61
+6 Female     65
+
+
+
+heights %>% 
+  group_by(sex) %>%
+  summarize(average = mean(height), standard_deviation = sd(height))
+  
+> heights %>% 
++   group_by(sex) %>%
++   summarize(average = mean(height), standard_deviation = sd(height))
+# A tibble: 2 × 3
+  sex    average standard_deviation
+  <fct>    <dbl>              <dbl>
+1 Female    64.9               3.76
+2 Male      69.3               3.61
+
+
+murders %>% 
+  group_by(region) %>%
+  summarize(median_rate = median(rate))
+  
+  
+  
+library(tidyverse)
+library(dslabs)
+data(murders)
+
+murders %>%
+  arrange(population) %>%
+  head()
+  
+> murders %>%
++   arrange(population) %>%
++   head()
+                 state abb        region population total
+1              Wyoming  WY          West     563626     5
+2 District of Columbia  DC         South     601723    99
+3              Vermont  VT     Northeast     625741     2
+4         North Dakota  ND North Central     672591     4
+5               Alaska  AK          West     710231    19
+6         South Dakota  SD North Central     814180     8
+
+
+murders <- mutate(murders, rate = total/population * 10^5)
+murders %>% 
+  arrange(rate) %>% 
+  head()
+  
+murders %>% arrange(desc(rate)) %>% head()
+
+murders <- mutate(murders, rate = total/population * 10^5)
+
+
+library(tidyverse)
+library(dslabs)
+data("murders")
+murders <- mutate(murders, rate = total/population * 10^5)
+murders %>% 
+  arrange(region, desc(rate)) %>% 
+  head()
+  
+  
+> murders %>% 
++   arrange(region, desc(rate)) %>% 
++   head()
+          state abb    region population total     rate
+1  Pennsylvania  PA Northeast   12702379   457 3.597751
+2    New Jersey  NJ Northeast    8791894   246 2.798032
+3   Connecticut  CT Northeast    3574097    97 2.713972
+4      New York  NY Northeast   19378102   517 2.667960
+5 Massachusetts  MA Northeast    6547629   118 1.802179
+6  Rhode Island  RI Northeast    1052567    16 1.520093
+> 
+
+
+murders %>% top_n(10, rate)
+
+
+> murders %>% top_n(10, rate)
+                  state abb        region population total      rate
+1               Arizona  AZ          West    6392017   232  3.629527
+2              Delaware  DE         South     897934    38  4.231937
+3  District of Columbia  DC         South     601723    99 16.452753
+4               Georgia  GA         South    9920000   376  3.790323
+5             Louisiana  LA         South    4533372   351  7.742581
+6              Maryland  MD         South    5773552   293  5.074866
+7              Michigan  MI North Central    9883640   413  4.178622
+8           Mississippi  MS         South    2967297   120  4.044085
+9              Missouri  MO North Central    5988927   321  5.359892
+10       South Carolina  SC         South    4625364   207  4.475323
+> 
+
+
+library(tidyverse)
+library(dslabs)
+data(murders)
+class(murders)
+
+
+murders %>% group_by(region) %>% head()
+
+
+class(murders[,4])
+
+
+class(as_tibble(murders)[,4])
+
+class(as_tibble(murders)$population)
+
+as_tibble(murders)$Population
+
+tibble(id = c(1, 2, 3), func = c(mean, median, sd))
+
+
+grades <- tibble(names = c("John", "Juan", "Jean", "Yao"), 
+                     exam_1 = c(95, 80, 90, 85), 
+                     exam_2 = c(90, 85, 85, 90))
+grades
+
+murders %>% group_by(region) %>% class()
+
+grades <- data.frame(names = c("John", "Juan", "Jean", "Yao"), 
+                     exam_1 = c(95, 80, 90, 85), 
+                     exam_2 = c(90, 85, 85, 90))
+class(grades$names)
+
+
+
+as_tibble(grades) %>% class()
+
+
+library(tidyverse)
+library(dslabs)
+data("murders")
+
+tab_1 <- filter(murders, region == "South")
+tab_2 <- mutate(tab_1, rate = total / population * 10^5)
+rates <- tab_2$rate
+median(rates)
+
+
+filter(murders, region == "South") %>% 
+  mutate(rate = total / population * 10^5) %>% 
+  summarize(median = median(rate)) %>%
+  pull(median)
+
+
+
+rates <-filter(murders, region == "South") %>% 
+  mutate(rate = total / population * 10^5) %>% 
+  .$rate
+median(rates)
+
+
+compute_s_n <- function(n){
+  x <- 1:n
+  sum(x)
+}
+
+
+n <- 1:25
+s_n <- sapply(n, compute_s_n)
+
+s_n
+
+
+
+library(tidyverse)
+s_n <- map(n, compute_s_n)
+class(s_n)
+s_n
+
+
+
+s_n <- map_dbl(n, compute_s_n)
+class(s_n)
+
+
+s_n <- map_df(n, compute_s_n)
+
+
+compute_s_n <- function(n){
+  x <- 1:n
+  tibble(sum = sum(x))
+}
+
+s_n <- map_df(n, compute_s_n)
+
+head(s_n)
+
+
+# Creamos un vector de números
+numeros <- c(2, 4, 6, 8, 10)
+
+# Usamos la función reduce para calcular el producto
+producto <- reduce(numeros, `*`)
+
+producto
+
+
+# Creamos una lista de números
+numeros <- list(2, 4, 6, 8, 10)
+
+# Usamos la función walk para imprimir cada elemento en la consola
+walk(numeros, print)
+
+
+library(tidyverse)
+library(dslabs)
+x <- c(-2, -1, 0, 1, 2)
+case_when(x < 0 ~ "Negative", x > 0 ~ "Positive", TRUE ~ "Zero")

@@ -1,0 +1,21 @@
+---
+title: "Estructuras de Control"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+R como casi cualquier otro lenguaje de programación proporciona estas estructuras que no son más que construcciones sintácticas que determinaran el orden y la lógica de algunas operaciones dentro de nuestro flujo de código.
+
+## Es Decir
+
+Van a dirigir el flujo de las operaciones y van a controlar su ejecución hacia una dirección o hacia otra, dependiendo de las condicionantes que les propongamos.
+
+## Visualizando
+
+![](imagenes/condicional-doble.png){fig-align="center" width="208"}
+

@@ -1,0 +1,47 @@
+---
+title: "Tidyverse"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Tidyverse
+
+![](imagenes/tidyverse_packages.png)
+
+## Introducción por chatGPT
+
+La librería "tidyverse" es un conjunto de paquetes de R diseñados para trabajar juntos de manera coherente y facilitar el análisis de datos. Fue desarrollado por Hadley Wickham y su equipo en RStudio, y se ha convertido en una de las librerías más populares y útiles en el mundo del análisis de datos con R.
+
+## Librerias
+
+El "tidyverse" incluye una serie de paquetes como "ggplot2", "dplyr", "tidyr", "readr", "purrr", "stringr" y otros más. Cada uno de estos paquetes aborda un aspecto específico del análisis de datos, desde la manipulación y limpieza de datos hasta la visualización y modelado.
+
+
+## Filosofia 
+
+Lo que hace que el "tidyverse" sea tan útil es que los paquetes se integran bien entre sí y utilizan una sintaxis coherente y fácil de entender. También promueve la filosofía "tidy data", que se refiere a la organización de los datos en tablas bien estructuradas y fáciles de analizar.
+
+## Resumen
+
+En resumen, el "tidyverse" es una herramienta poderosa y útil para el análisis de datos en R, y su popularidad sigue en aumento debido a su facilidad de uso y eficacia.
+
+
+## Introducción
+
+Como vemos en la introducción anterior, la IA de chatGPT nos da una idea bastante acertada de lo que es el universo ordenado o el “tidyverse”, aquí es donde R realmente se desprende de otros lenguajes que se utilizan para el análisis de datos.
+
+## Que vamos a hacer?
+
+Aprenderemos a trabajar directamente con dataframes y tibbles, lo que nos va a facilitar enormemente la organización de nuestra información. Utilizaremos dataframes en la gran mayoría de casos. 
+
+
+## Librerias
+
+Si aun no lo hemos realizado procederemos a instalar nuestra librería de tidyverse además de dslabs con el siguiente comando:
+
+install.packages("tidyverse")
+install.packages("dslabs")
+
