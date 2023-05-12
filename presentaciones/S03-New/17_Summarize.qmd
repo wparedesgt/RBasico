@@ -1,0 +1,141 @@
+---
+title: "Resumiendo Datos"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## Introducción
+
+![](imagenes/summarize01.png)
+
+## Iniciando
+
+Una parte importante del análisis exploratorio de datos es resumir los datos. El promedio y la desviación estándar son dos ejemplos de estadísticas de resumen ampliamente utilizadas. A menudo se pueden obtener resúmenes más informativos dividiendo primero los datos en grupos.
+
+## Que cubriremos?
+
+En esta sección, cubrimos dos nuevas funciones dplyr que facilitan estos cálculos:
+
+-   summarize()
+-   group_by().
+
+Aprendemos a acceder a los valores resultantes utilizando la función pull().
+
+## Función summarize()
+
+La función summarize() en dplyr proporciona una forma de calcular estadísticas de resumen con código intuitivo y legible. Comenzamos con un ejemplo simple basado en alturas. El conjunto de datos de alturas incluye las alturas y el sexo reportados por los estudiantes en una encuesta en clase.
+
+## Codigo
+
+```{r, echo=TRUE}
+library(dplyr)
+library(dslabs)
+data(heights)
+s <- heights %>% 
+  filter(sex == "Female") %>%
+  summarize(promedio = mean(height), desviacion_standard = sd(height))
+s
+```
+
+## Acceso
+
+Debido a que la tabla resultante almacenada en s es un dataframe, podemos acceder a los componentes con el descriptor de acceso \$:
+
+-   s\$promedio
+-   s\$desviacion_standard
+
+## Ejemplo
+
+```{r, echo=TRUE}
+heights %>% 
+  filter(sex == "Female") %>%
+  summarize(median = median(height), minimum = min(height), maximum = max(height))
+```
+
+## Otro Ejemplo
+
+```{r, echo=TRUE}
+heights %>% 
+  filter(sex == "Female") %>%
+  summarize(range = quantile(height, c(0, 0.5, 1)))
+```
+
+## Un mal ejemplo
+
+```{r, echo=TRUE}
+data(murders)
+murders <- murders %>% mutate(rate = total/population*10^5)
+
+summarize(murders, mean(rate))
+```
+
+## Corrección
+
+```{r, echo=TRUE}
+us_murder_rate <- murders %>%
+  summarize(rate = sum(total) / sum(population) * 10^5)
+us_murder_rate
+```
+
+## Función pull()
+
+El objeto us_murder_rate definido anteriormente representa solo un número. Sin embargo, lo estamos almacenando en un dataframe:
+
+```{r, echo=TRUE}
+class(us_murder_rate)
+```
+
+## Porque?
+
+Dado que, como la mayoría de las funciones de dplyr, summarize siempre devolverá un dataframe.
+
+Esto podría ser problemático si queremos usar este resultado con funciones que requieren un valor numérico. Aquí mostramos un truco útil para acceder a los valores almacenados en los datos cuando se usan tuberías:
+
+Cuando un objeto de datos se canaliza a ese objeto y se puede acceder a sus columnas usando la función pull().
+
+## Código
+
+```{r, echo=TRUE}
+us_murder_rate %>% pull(rate)
+```
+
+## Ampliando
+
+```{r, echo=TRUE}
+us_murder_rate <- murders %>% 
+  summarize(rate = sum(total) / sum(population) * 10^5) %>%
+  pull(rate)
+
+us_murder_rate
+```
+
+## Función group_by()
+
+Una operación común en la exploración de datos es dividir primero los datos en grupos y luego calcular resúmenes para cada grupo. Por ejemplo, es posible que queramos calcular la desviación promedio y estándar para las alturas de hombres y mujeres por separado. La función group_by nos ayuda a hacer esto.
+
+## Código
+
+```{r, echo=TRUE}
+heights %>% group_by(sex) %>% head()
+```
+
+## Agrupando
+
+```{r, echo=TRUE}
+heights %>% 
+  group_by(sex) %>%
+  summarize(average = mean(height), standard_deviation = sd(height))
+```
+
+## Ejemplo No. 2
+
+```{r, echo=TRUE}
+murders %>% 
+  group_by(region) %>%
+  summarize(median_rate = median(rate))
+
+
+```
