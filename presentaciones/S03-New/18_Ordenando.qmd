@@ -11,17 +11,68 @@ editor: visual
 
 ![](imagenes/arrange.png)
 
-## Bullets
+## Introducción
 
-When you click the **Render** button a document will be generated that includes:
+Al examinar un conjunto de datos, a menudo es conveniente ordenar la tabla por las diferentes columnas. Sabemos acerca de la función order() y sort(), pero para ordenar tablas enteras, la función de dplyr arrange() es útil. Por ejemplo, aquí ordenamos los estados por tamaño de población:
 
--   Content authored with markdown
--   Output from executable code
+## Funcion arrange()
 
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r, echo=TRUE}
+library(tidyverse)
+library(dslabs)
+data(murders)
+murders %>%
+  arrange(population) %>%
+  head()
 ```
+
+## Estableciendo el ordenamiento
+
+Como vemos lo ha ordenado por población en orden ascendente.
+Con la funcion arrange() podemos decidir por qué columna ordenar. Para ver los estados por población, de menor a mayor, organizamos por rate:
+
+## Codigo
+```{r, echo=TRUE}
+murders <- mutate(murders, rate = total/population * 10^5)
+murders %>% 
+  arrange(rate) %>% 
+  head()
+```
+
+## Orden Descendente
+Tenga en cuenta que el comportamiento predeterminado es ordenar en orden ascendente. En dplyr, la función desc() transforma un vector para que esté en orden descendente. Para ordenar la tabla en orden descendente, podemos escribir:
+
+## Código
+
+```{r, echo=TRUE}
+murders %>% arrange(desc(rate)) %>% head()
+```
+
+
+## Clasificación Anidada
+
+Si estamos ordenando por una columna con ligaduras, podemos usar una segunda columna para romper la ligadura. Del mismo modo, se puede usar una tercera columna para romper los lazos entre la primera y la segunda, y así sucesivamente. 
+
+
+## Código
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(dslabs)
+data("murders")
+murders <- mutate(murders, rate = total/population * 10^5)
+murders %>% 
+  arrange(region, desc(rate)) %>% 
+  head()
+```
+
+## Función top_n()
+
+En el código anterior, hemos utilizado la función head() para evitar que la página se llene con todo el conjunto de datos. Si queremos ver una proporción mayor, podemos usar la función top_n. Esta función toma un dataframe como primer argumento, el número de filas para mostrar en el segundo y la variable para filtrar en el tercero. Aquí hay un ejemplo de cómo ver las 10 filas superiores:
+
+## Código
+```{r, echo=TRUE}
+murders %>% top_n(10, rate)
+```
+
+

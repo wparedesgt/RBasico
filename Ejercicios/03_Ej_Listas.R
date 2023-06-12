@@ -62,7 +62,7 @@ Newlist
 
 Newlist$a <- Newlist$a +1
 
-Newlist
+Newlist[1]
 
 #Escriba una instrucción en R para agregar 1 elemento al primer vector de Newlist.
 

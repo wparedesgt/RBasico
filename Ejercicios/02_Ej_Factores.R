@@ -79,8 +79,9 @@ z
 set.seed(1)
 
 s1 <- factor(sample(letters, size=5, replace=TRUE)) 
+s1
 s2 <- factor(sample(letters, size=5, replace=TRUE))
-
+s2
 #Escriba una expresión en R para concatenar s1 y s2 en un solo factor s3 con 10 elementos.
 
 #Su respuesta aquí:__________________________________________
@@ -99,8 +100,8 @@ data("iris")
 #Esto es mas avanzado les puede tomar algo de tiempo, pero aprendemos dos cosas, a buscar la ayuda y a pensar una solución adecuada.
 
 
-(4.3, 5.02] (5.02, 5.74] (5.74, 6.46] (6.46, 7.18] (7.18, 7.9]
-32 41 42 24 11
+#(4.3, 5.02] (5.02, 5.74] (5.74, 6.46] (6.46, 7.18] (7.18, 7.9]
+#32 41 42 24 11
 
 
 #Su respuesta aquí:___________________________________________________
@@ -129,6 +130,7 @@ table(cut(iris$Sepal.Length, 5))
 #Su respuesta aquí:________________________________________________________
 
 table(iris$Sepal.Length < 5, factor(iris$Species))
+
 
 #Tip: nuevamente utilizamos la función table
 

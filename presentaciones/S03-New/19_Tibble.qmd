@@ -1,0 +1,72 @@
+---
+title: "Tibble"
+author: "William V. Paredes"
+format: 
+  pptx:
+    reference-doc: wvparedes.pptx
+editor: visual
+---
+
+## TIBBLE
+
+![](imagenes/tibble.png)
+
+## Introducción
+
+Cuando ya tenemos operaciones en datos usando (tidy), esté necesariamente se tiene que almacenar como dataframe.
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(dslabs)
+data(murders)
+class(murders)
+```
+
+
+## Aclarando 
+
+En algunas páginas anteriores, presentamos la función group_by, que permite estratificar los datos antes de calcular las estadísticas de summarize(). 
+Pero:
+
+-    ¿dónde se almacena la información del dataframe?
+
+Tenga en cuenta que no hay columnas con esta información.
+Pero, si observa de cerca la salida a continuación, verá la línea A tibble: 6 x 5. 
+
+
+## Código
+
+```{r, echo=TRUE}
+murders %>% group_by(region) %>% head()
+```
+
+## Código
+
+```{r, echo=TRUE}
+murders %>% group_by(region) %>% class()
+```
+
+## Continuando
+
+El tbl, pronunciado tibble, es un tipo especial de dataframe. Las funciones group_by() y summarize() siempre devuelven este tipo de dataframe. 
+
+La función group_by() devuelve un tipo especial de tbl, grouped_df; Diremos más sobre esto más adelante. 
+
+## Por coherencia
+
+los verbos de manipulación __dplyr__ (select, filter, mutate y arrange) conservan la clase de la entrada: si reciben un datafame regular, devuelven un dataframe regular, mientras que, si reciben un tibble, devuelven un tibble. Pero los tibbles son el formato preferido en tidyverse y como resultado, las funciones tidyverse que producen un dataframe desde cero devuelven un tibble.
+
+## Es un dataframe?
+
+Los tibbles son muy similares a los dataframes. De hecho, puede pensar en ellos como una versión moderna de ellos. No obstante, hay tres diferencias importantes que describiremos.
+
+-   Los tibbles se ven mejor
+-   El método de impresión para tibbles es más legible que el dataframe. Para ver esto, compare los resultados de los asesinatos normal o si lo convertimos en un tibble. Podemos hacer esto usando as_tibble(murders). Si usa RStudio, la salida para un tibble se ajusta al tamaño de su ventana. 
+-   Los subset en un tibble son tibbles.
+
+## Codigo
+
+```{r, echo=TRUE}
+class(murders[,4])
+```
+
